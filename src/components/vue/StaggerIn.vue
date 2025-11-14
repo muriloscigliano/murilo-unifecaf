@@ -23,13 +23,13 @@ const hasAnimated = ref(false);
 const findAnimateableElements = (el: HTMLElement): HTMLElement[] => {
   const elements: HTMLElement[] = [];
   
-  // First, try to find grid items
+  // First, try to find grid items (most common)
   const gridItems = el.querySelectorAll('.grid > *');
   if (gridItems.length > 0) {
     return Array.from(gridItems) as HTMLElement[];
   }
   
-  // Then try space-y containers
+  // Then try space-y containers (check all possible space-y values)
   const spaceYSelectors = [
     '[class*="space-y-1"] > *',
     '[class*="space-y-2"] > *',
@@ -39,6 +39,7 @@ const findAnimateableElements = (el: HTMLElement): HTMLElement[] => {
     '[class*="space-y-6"] > *',
     '[class*="space-y-7"] > *',
     '[class*="space-y-8"] > *',
+    '[class*="space-y-10"] > *',
     '[class*="space-y-12"] > *',
   ];
   
@@ -53,6 +54,12 @@ const findAnimateableElements = (el: HTMLElement): HTMLElement[] => {
   const nestedSpaceY = el.querySelectorAll('div[class*="space-y"] > *');
   if (nestedSpaceY.length > 0) {
     return Array.from(nestedSpaceY) as HTMLElement[];
+  }
+  
+  // Check for TechCard, PromptCard, FeatureCard, WorkflowStep components
+  const componentCards = el.querySelectorAll('[class*="tech-card"], [class*="prompt-card"], [class*="feature-card"], [class*="workflow-step"]');
+  if (componentCards.length > 0) {
+    return Array.from(componentCards) as HTMLElement[];
   }
   
   // Check for direct children that are not text nodes or headings
@@ -84,8 +91,10 @@ onMounted(async () => {
           
           if (elements.length > 0) {
             elements.forEach((element, index) => {
-              // Set initial state
-              element.style.opacity = '0';
+              // Ensure element is visible initially (fallback)
+              if (element.style.opacity === '' || element.style.opacity === '0') {
+                element.style.opacity = '0';
+              }
               element.style.transform = 'translateY(30px)';
               element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
               
@@ -95,6 +104,11 @@ onMounted(async () => {
                 element.style.transform = 'translateY(0)';
               }, props.delay + (index * props.stagger));
             });
+          } else {
+            // If no elements found, ensure container is visible
+            if (container.value) {
+              container.value.style.opacity = '1';
+            }
           }
           
           observer.disconnect();
@@ -102,14 +116,25 @@ onMounted(async () => {
       });
     },
     { 
-      threshold: 0.15,
-      rootMargin: '0px 0px -100px 0px'
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
     }
   );
 
   if (container.value) {
     observer.observe(container.value);
   }
+  
+  // Fallback: ensure visibility after 2 seconds if animation didn't trigger
+  setTimeout(() => {
+    if (!hasAnimated.value && container.value) {
+      const elements = findAnimateableElements(container.value);
+      elements.forEach((element) => {
+        element.style.opacity = '1';
+        element.style.transform = 'translateY(0)';
+      });
+    }
+  }, 2000);
 });
 </script>
 
