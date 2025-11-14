@@ -1,0 +1,64 @@
+---
+import { IconWrapper } from "./IconWrapper";
+
+interface Props {
+  icon: any;
+  title: string;
+  description: string;
+  systemMessagePreview: string;
+  userMessagePreview: string;
+  usage: string;
+  path?: "good" | "bad" | "router" | "core" | "behavioral" | "functional" | "technical";
+}
+
+const { icon: Icon, title, description, systemMessagePreview, userMessagePreview, usage, path } = Astro.props;
+
+const pathColors: Record<string, string> = {
+  good: "border-green-500/15 bg-green-500/2",
+  bad: "border-orange-500/15 bg-orange-500/2",
+  router: "border-blue-500/15 bg-blue-500/2",
+  core: "border-purple-500/15 bg-purple-500/2",
+  behavioral: "border-pink-500/15 bg-pink-500/2",
+  functional: "border-cyan-500/15 bg-cyan-500/2",
+  technical: "border-indigo-500/15 bg-indigo-500/2",
+};
+
+const cardClasses = path ? pathColors[path] : "border-[var(--border)] bg-[var(--card)]";
+---
+
+<div class={`rounded-3xl border transition-all hover:scale-[1.01] ${cardClasses}`}>
+  <div class="p-7">
+    <div class="flex items-start gap-5 mb-5">
+      <IconWrapper client:load icon={Icon} className="w-8 h-8 text-[var(--muted-foreground)] stroke-[1.5] flex-shrink-0 mt-1" />
+      <div class="flex-1">
+        <h3 class="text-lg font-semibold mb-2">{title}</h3>
+        <p class="text-base text-[var(--muted-foreground)] mb-3 leading-relaxed">
+          {description}
+        </p>
+        <div class="text-[16px] text-[var(--muted-foreground)] font-mono bg-[var(--muted)]/50 px-3 py-1.5 rounded-lg inline-block mb-4">
+          {usage}
+        </div>
+      </div>
+    </div>
+
+    <div class="space-y-4">
+      <div class="p-4 rounded-xl bg-[var(--muted)]/40 border border-[var(--border)]/50">
+        <div class="text-[14px] font-semibold text-[var(--foreground)] mb-2 uppercase tracking-wide">
+          System Message
+        </div>
+        <p class="text-[14px] text-[var(--muted-foreground)] leading-relaxed line-clamp-3">
+          {systemMessagePreview}
+        </p>
+      </div>
+
+      <div class="p-4 rounded-xl bg-[var(--muted)]/40 border border-[var(--border)]/50">
+        <div class="text-[14px] font-semibold text-[var(--foreground)] mb-2 uppercase tracking-wide">
+          User Message Template
+        </div>
+        <p class="text-[14px] text-[var(--muted-foreground)] leading-relaxed line-clamp-2 font-mono">
+          {userMessagePreview}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

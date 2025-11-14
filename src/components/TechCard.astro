@@ -1,0 +1,29 @@
+---
+import { IconWrapper } from "./IconWrapper";
+
+interface Props {
+  icon: any;
+  name: string;
+  category: string;
+}
+
+const { icon: Icon, name, category } = Astro.props;
+---
+
+<div class="border border-[var(--border)]/60 bg-[var(--card)] transition-all hover:border-[var(--primary)]/30 hover:scale-[1.01] rounded-3xl group">
+  <div class="p-6">
+    <div class="flex items-start gap-4">
+      <div class="w-12 h-12 rounded-xl bg-[var(--muted)]/50 flex items-center justify-center flex-shrink-0 group-hover:bg-[var(--muted)]/70 transition-colors">
+        <IconWrapper client:load icon={Icon} className="w-6 h-6 text-[var(--muted-foreground)] stroke-[1.5] group-hover:text-[var(--foreground)] transition-colors" />
+      </div>
+      <div class="flex-1 min-w-0">
+        <div class="text-xs text-[var(--muted-foreground)] uppercase tracking-wide mb-1.5 font-medium">
+          {category}
+        </div>
+        <h3 class="text-base font-semibold text-[var(--foreground)] leading-tight">
+          {name}
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>

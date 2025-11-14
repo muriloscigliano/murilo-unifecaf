@@ -1,13 +1,13 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { FeatureCard } from "@/components/FeatureCard";
-import { TechCard } from "@/components/TechCard";
+import TechCard from "@/components/TechCard.astro";
 import { WorkflowStep } from "@/components/WorkflowStep";
 import { ArchitectureLayer } from "@/components/ArchitectureLayer";
 import { PromptTechnique } from "@/components/PromptTechnique";
 // import { PromptTree, PromptNode } from "@/components/PromptTree";
 // import { PromptViewer } from "@/components/PromptViewer";
-import { PromptCard } from "@/components/PromptCard";
+import PromptCard from "@/components/PromptCard.astro";
 import { SectionDivider } from "@/components/SectionDivider";
 // import { ValueProposition } from "@/components/ValueProposition";
 import { Button } from "@/components/ui/button";
@@ -486,19 +486,16 @@ const project = {
               </p>
               <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 <TechCard
-                  client:load
                   icon={Code}
                   name="Cursor"
                   category="Development Tools"
                 />
                 <TechCard
-                  client:load
                   icon={Bot}
                   name="Claude Code"
                   category="Development Tools"
                 />
                 <TechCard
-                  client:load
                   icon={Palette}
                   name="Figma"
                   category="Development Tools"
@@ -514,19 +511,16 @@ const project = {
               </p>
               <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 <TechCard
-                  client:load
                   icon={Code}
                   name="Astro"
                   category="Frontend Framework"
                 />
                 <TechCard
-                  client:load
                   icon={Sparkles}
                   name="Vue"
                   category="Frontend Framework"
                 />
                 <TechCard
-                  client:load
                   icon={Globe}
                   name="Vercel"
                   category="Frontend Framework"
@@ -542,19 +536,16 @@ const project = {
               </p>
               <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 <TechCard
-                  client:load
                   icon={Brain}
                   name="OpenAI GPT-5"
                   category="AI Engine"
                 />
                 <TechCard
-                  client:load
                   icon={Brain}
                   name="GPT-4o-mini"
                   category="AI Engine"
                 />
                 <TechCard
-                  client:load
                   icon={Sparkles}
                   name="Gemini Flash 2.5"
                   category="AI Engine"
@@ -570,19 +561,16 @@ const project = {
               </p>
               <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 <TechCard
-                  client:load
                   icon={Database}
                   name="Supabase"
                   category="Integrated Services"
                 />
                 <TechCard
-                  client:load
                   icon={Train}
                   name="Railway"
                   category="Integrated Services"
                 />
                 <TechCard
-                  client:load
                   icon={FileCheck}
                   name="Nutrient.io"
                   category="Integrated Services"
@@ -600,7 +588,6 @@ const project = {
 					  </p>
 					  <div class="grid grid-cols-1 sm:grid-cols-1 gap-5">
 						<TechCard
-						  client:load
 						  icon={Workflow}
 						  name="n8n"
 						  category="Automation Platform"
@@ -616,7 +603,6 @@ const project = {
 					  </p>
 					  <div class="grid grid-cols-1 sm:grid-cols-1 gap-5">
 						<TechCard
-						  client:load
 						  icon={Database}
 						  name="PostgreSQL"
 						  category="Database"
@@ -746,7 +732,6 @@ const project = {
               <h4 class="text-xl font-semibold mb-6 text-[var(--muted-foreground)] uppercase tracking-wide">Core Prompts</h4>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <PromptCard
-                client:load
                 icon={Target}
                 title="Objective"
                 description="Identidade e missão do Telos - consciência tecida de código e curiosidade"
@@ -756,7 +741,6 @@ const project = {
                 path="core"
               />
               <PromptCard
-                client:load
                 icon={Compass}
                 title="Context"
                 description="Framework operacional - jornada conversacional e estágios de briefing"
@@ -766,7 +750,6 @@ const project = {
                 path="core"
               />
               <PromptCard
-                client:load
                 icon={FileText}
                 title="Briefing"
                 description="Descoberta de projetos e coleta de dados estruturados para geração de propostas"
@@ -776,7 +759,6 @@ const project = {
                 path="core"
               />
               <PromptCard
-                client:load
                 icon={UserCheck}
                 title="Lead Collection"
                 description="Sequência obrigatória para coletar nome, email e empresa antes da discussão do projeto"
@@ -786,7 +768,6 @@ const project = {
                 path="core"
               />
               <PromptCard
-                client:load
                 icon={Zap}
                 title="Early Extraction"
                 description="Extração agressiva de dados críticos antes do fim da conversa"
@@ -807,7 +788,6 @@ const project = {
               <h4 class="text-xl font-semibold mb-6 text-[var(--muted-foreground)] uppercase tracking-wide">Behavioral Prompts</h4>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <PromptCard
-                client:load
                 icon={Zap}
                 title="Actions"
                 description="Motor comportamental - ciclo Sense, Clarify, Create, Guide"
@@ -817,7 +797,6 @@ const project = {
                 path="behavioral"
               />
               <PromptCard
-                client:load
                 icon={Brain}
                 title="Insights"
                 description="Inteligência cognitiva e emocional - percepção através de 5 lentes"
@@ -827,7 +806,6 @@ const project = {
                 path="behavioral"
               />
               <PromptCard
-                client:load
                 icon={Scale}
                 title="Normals"
                 description="Diretrizes éticas e de estilo - guardrails para interações responsáveis"
@@ -837,7 +815,6 @@ const project = {
                 path="behavioral"
               />
               <PromptCard
-                client:load
                 icon={DoorOpen}
                 title="Exits"
                 description="Framework de fechamento de conversas - cada fim é uma abertura"
@@ -858,7 +835,6 @@ const project = {
               <h4 class="text-xl font-semibold mb-6 text-[var(--muted-foreground)] uppercase tracking-wide">Functional Prompts</h4>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <PromptCard
-                client:load
                 icon={FileCheck}
                 title="Quote Builder"
                 description="Geração de propostas profissionais com cálculo de preços e timeline"
@@ -868,7 +844,6 @@ const project = {
                 path="functional"
               />
               <PromptCard
-                client:load
                 icon={RotateCcw}
                 title="Follow-Up"
                 description="Re-engajamento com Humans que pausaram ou precisam de continuidade"
@@ -878,7 +853,6 @@ const project = {
                 path="functional"
               />
               <PromptCard
-                client:load
                 icon={Map}
                 title="Roadmap"
                 description="Transformação de briefings em roadmaps claros e modulares"
@@ -888,7 +862,6 @@ const project = {
                 path="functional"
               />
               <PromptCard
-                client:load
                 icon={FileSignature}
                 title="Contract"
                 description="Geração de contratos legais com tom human-first mas juridicamente sólidos"
@@ -909,7 +882,6 @@ const project = {
               <h4 class="text-xl font-semibold mb-6 text-[var(--muted-foreground)] uppercase tracking-wide">Technical Prompts</h4>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <PromptCard
-                client:load
                 icon={Network}
                 title="System Integration"
                 description="Camada de operações cognitivas - integração com Supabase, n8n e APIs"
@@ -919,7 +891,6 @@ const project = {
                 path="technical"
               />
               <PromptCard
-                client:load
                 icon={Shield}
                 title="Anti-Hallucination"
                 description="Regras críticas para evitar alucinações - extrair apenas dados explícitos"
@@ -929,7 +900,6 @@ const project = {
                 path="technical"
               />
               <PromptCard
-                client:load
                 icon={BookOpen}
                 title="Examples"
                 description="Exemplos de comportamento - padrões de comunicação e operação"
@@ -939,7 +909,6 @@ const project = {
                 path="technical"
               />
               <PromptCard
-                client:load
                 icon={Shield}
                 title="Response Guardrails"
                 description="Limites e diretrizes para manter respostas focadas e dentro do escopo"
