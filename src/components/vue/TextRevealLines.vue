@@ -8,16 +8,18 @@
 import { ref, onMounted, nextTick } from "vue";
 
 const container = ref<HTMLElement | null>(null);
+const hasAnimated = ref(false);
 
 onMounted(async () => {
   await nextTick();
   
-  if (!container.value) return;
+  if (!container.value || hasAnimated.value) return;
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !hasAnimated.value) {
+          hasAnimated.value = true;
           const lines = container.value?.querySelectorAll(".reveal-line");
           if (lines && lines.length > 0) {
             lines.forEach((line, index) => {
@@ -30,7 +32,10 @@ onMounted(async () => {
         }
       });
     },
-    { threshold: 0.1 }
+    { 
+      threshold: 0.2,
+      rootMargin: '0px'
+    }
   );
 
   if (container.value) {
@@ -52,4 +57,3 @@ onMounted(async () => {
   transform: translateY(0);
 }
 </style>
-

@@ -59,6 +59,7 @@ import {
   RotateCcw,
   ChevronDown,
   ChevronUp,
+  Palette,
 } from "lucide-react";
 import FullWidthVideo from "@/components/FullWidthVideo.astro";
 
@@ -129,13 +130,15 @@ const project = {
             <div class="w-2 h-2 rounded-full bg-[var(--primary)] animate-pulse"></div>
             <span>Telos - AI Strategist</span>
           </div>
-          <TextRevealLines client:load>
-            <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              <span class="block reveal-line">Sistema Inteligente de</span>
-              <span class="block reveal-line">Qualificação e Automação</span>
-              <span class="block reveal-line">de Leads com IA</span>
-            </h1>
-          </TextRevealLines>
+        </FadeIn>
+        <TextRevealLines client:load>
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+            <span class="block reveal-line">Sistema Inteligente de</span>
+            <span class="block reveal-line">Qualificação e Automação</span>
+            <span class="block reveal-line">de Leads com IA</span>
+          </h1>
+        </TextRevealLines>
+        <FadeIn client:load>
           <p class="text-xl md:text-2xl text-[var(--muted-foreground)] max-w-6xl mx-auto leading-relaxed hyphens-none" style="word-break: normal; overflow-wrap: break-word;">
             {project.description}
           </p>
@@ -465,7 +468,7 @@ const project = {
     </section>
 
     <!-- Technologies Section -->
-    <section class="container mx-auto px-4 py-20">
+    <section id="technologies" class="container mx-auto px-4 py-20">
       <StaggerIn client:load stagger={100}>
         <div class="max-w-6xl mx-auto">
           <h2 class="text-3xl md:text-4xl font-bold text-center mb-5">Tecnologias</h2>
@@ -491,6 +494,12 @@ const project = {
                   client:load
                   icon={Bot}
                   name="Claude Code"
+                  category="Development Tools"
+                />
+                <TechCard
+                  client:load
+                  icon={Palette}
+                  name="Figma"
                   category="Development Tools"
                 />
               </div>
@@ -625,7 +634,7 @@ const project = {
 
 
     <!-- Prompt Engineering Section -->
-    <section class="container mx-auto px-4 py-20">
+    <section id="prompt-engineering" class="container mx-auto px-4 py-20">
       <StaggerIn client:load stagger={100}>
         <div class="max-w-6xl mx-auto">
           <h2 class="text-3xl md:text-4xl font-bold text-center mb-5">Prompt Engineering</h2>
@@ -714,7 +723,7 @@ const project = {
 		  <SectionDivider />
 
           <!-- Telos Prompts Overview -->
-          <div class="mb-14">
+          <div id="telos-prompts" class="mb-14">
             <div class="max-w-4xl mx-auto text-center mb-8">
               <h3 class="text-4xl font-semibold mb-4 text-[var(--foreground)]">Sistema de Prompts do Telos</h3>
               <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-6">

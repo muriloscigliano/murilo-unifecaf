@@ -8,12 +8,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, nextTick } from "vue";
 
 const container = ref<HTMLElement | null>(null);
 const isVisible = ref(false);
 
-onMounted(() => {
+onMounted(async () => {
+  await nextTick();
+  
+  if (!container.value || isVisible.value) return;
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -23,7 +27,10 @@ onMounted(() => {
         }
       });
     },
-    { threshold: 0.1 }
+    { 
+      threshold: 0.15,
+      rootMargin: '0px 0px -100px 0px'
+    }
   );
 
   if (container.value) {
@@ -44,4 +51,3 @@ onMounted(() => {
   transform: translateY(0);
 }
 </style>
-
