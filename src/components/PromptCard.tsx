@@ -55,7 +55,7 @@ export function PromptCard({
             <div className="text-[14px] font-semibold text-[var(--foreground)] mb-2 uppercase tracking-wide">
               System Message
             </div>
-            <p className="text-[16px] text-[var(--muted-foreground)] leading-relaxed line-clamp-3">
+            <p className="text-[14px] text-[var(--muted-foreground)] leading-relaxed line-clamp-3">
               {systemMessagePreview}
             </p>
           </div>
@@ -64,7 +64,7 @@ export function PromptCard({
             <div className="text-[14px] font-semibold text-[var(--foreground)] mb-2 uppercase tracking-wide">
               User Message Template
             </div>
-            <p className="text-[16px] text-[var(--muted-foreground)] leading-relaxed line-clamp-2 font-mono">
+            <p className="text-[14px] text-[var(--muted-foreground)] leading-relaxed line-clamp-2 font-mono">
               {userMessagePreview}
             </p>
           </div>
