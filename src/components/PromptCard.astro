@@ -29,7 +29,7 @@ const cardClasses = path ? pathColors[path] : "border-[var(--border)] bg-[var(--
 <div class={`rounded-3xl border transition-all hover:scale-[1.01] ${cardClasses}`}>
   <div class="p-7">
     <div class="flex items-start gap-5 mb-5">
-      <IconWrapper client:load icon={Icon} className="w-8 h-8 text-[var(--muted-foreground)] stroke-[1.5] flex-shrink-0 mt-1" />
+      <IconWrapper client:only="react" icon={Icon} className="w-8 h-8 text-[var(--muted-foreground)] stroke-[1.5] flex-shrink-0 mt-1" />
       <div class="flex-1">
         <h3 class="text-lg font-semibold mb-2">{title}</h3>
         <p class="text-base text-[var(--muted-foreground)] mb-3 leading-relaxed">

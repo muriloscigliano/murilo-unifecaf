@@ -6,9 +6,13 @@ interface IconWrapperProps {
 }
 
 export function IconWrapper({ icon: Icon, className }: IconWrapperProps) {
-  if (!Icon || typeof Icon !== 'function') {
-    return null;
+  if (!Icon) {
+    return <span className={className}></span>;
   }
-  return <Icon className={className} />;
+  
+  try {
+    return <Icon className={className} />;
+  } catch {
+    return <span className={className}></span>;
+  }
 }
-

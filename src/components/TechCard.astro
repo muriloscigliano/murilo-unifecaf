@@ -14,7 +14,7 @@ const { icon: Icon, name, category } = Astro.props;
   <div class="p-6">
     <div class="flex items-start gap-4">
       <div class="w-12 h-12 rounded-xl bg-[var(--muted)]/50 flex items-center justify-center flex-shrink-0 group-hover:bg-[var(--muted)]/70 transition-colors">
-        <IconWrapper client:load icon={Icon} className="w-6 h-6 text-[var(--muted-foreground)] stroke-[1.5] group-hover:text-[var(--foreground)] transition-colors" />
+        <IconWrapper client:only="react" icon={Icon} className="w-6 h-6 text-[var(--muted-foreground)] stroke-[1.5] group-hover:text-[var(--foreground)] transition-colors" />
       </div>
       <div class="flex-1 min-w-0">
         <div class="text-xs text-[var(--muted-foreground)] uppercase tracking-wide mb-1.5 font-medium">
