@@ -30,6 +30,10 @@ export function PromptCard({
   usage,
   path,
 }: PromptCardProps) {
+  if (!Icon || typeof Icon !== 'function') {
+    return null;
+  }
+  
   return (
     <Card
       className={`rounded-3xl border transition-all hover:scale-[1.01] ${
@@ -38,14 +42,14 @@ export function PromptCard({
     >
       <CardContent className="p-7">
         <div className="flex items-start gap-5 mb-5">
-          <Icon className="w-8 h-8 text-[var(--muted-foreground)] stroke-[1.5] flex-shrink-0 mt-1" />
+          {Icon && <Icon className="w-8 h-8 text-[var(--muted-foreground)] stroke-[1.5] flex-shrink-0 mt-1" />}
           <div className="flex-1">
-            <h3 className="text-lg font-semibold mb-2">{title}</h3>
+            <h3 className="text-lg font-semibold mb-2">{title || ''}</h3>
             <p className="text-base text-[var(--muted-foreground)] mb-3 leading-relaxed">
-              {description}
+              {description || ''}
             </p>
             <div className="text-[16px] text-[var(--muted-foreground)] font-mono bg-[var(--muted)]/50 px-3 py-1.5 rounded-lg inline-block mb-4">
-              {usage}
+              {usage || ''}
             </div>
           </div>
         </div>
@@ -56,7 +60,7 @@ export function PromptCard({
               System Message
             </div>
             <p className="text-[14px] text-[var(--muted-foreground)] leading-relaxed line-clamp-3">
-              {systemMessagePreview}
+              {systemMessagePreview || ''}
             </p>
           </div>
 
@@ -65,7 +69,7 @@ export function PromptCard({
               User Message Template
             </div>
             <p className="text-[14px] text-[var(--muted-foreground)] leading-relaxed line-clamp-2 font-mono">
-              {userMessagePreview}
+              {userMessagePreview || ''}
             </p>
           </div>
         </div>
