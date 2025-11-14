@@ -56,12 +56,6 @@ const findAnimateableElements = (el: HTMLElement): HTMLElement[] => {
     return Array.from(nestedSpaceY) as HTMLElement[];
   }
   
-  // Check for TechCard, PromptCard, FeatureCard, WorkflowStep components
-  const componentCards = el.querySelectorAll('[class*="tech-card"], [class*="prompt-card"], [class*="feature-card"], [class*="workflow-step"]');
-  if (componentCards.length > 0) {
-    return Array.from(componentCards) as HTMLElement[];
-  }
-  
   // Check for direct children that are not text nodes or headings
   const directChildren = Array.from(el.children) as HTMLElement[];
   const filteredChildren = directChildren.filter(child => {
@@ -79,6 +73,9 @@ const findAnimateableElements = (el: HTMLElement): HTMLElement[] => {
 onMounted(async () => {
   await nextTick();
   
+  // Wait a bit more for React components to hydrate
+  await new Promise(resolve => setTimeout(resolve, 100));
+  
   if (!container.value || hasAnimated.value) return;
 
   const observer = new IntersectionObserver(
@@ -87,37 +84,40 @@ onMounted(async () => {
         if (entry.isIntersecting && container.value && !hasAnimated.value) {
           hasAnimated.value = true;
           
-          const elements = findAnimateableElements(container.value);
-          
-          if (elements.length > 0) {
-            elements.forEach((element, index) => {
-              // Ensure element is visible initially (fallback)
-              if (element.style.opacity === '' || element.style.opacity === '0') {
+          // Wait a bit more to ensure React components are rendered
+          setTimeout(() => {
+            if (!container.value) return;
+            
+            const elements = findAnimateableElements(container.value);
+            
+            if (elements.length > 0) {
+              elements.forEach((element, index) => {
+                // Set initial state
                 element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                
+                // Animate with stagger
+                setTimeout(() => {
+                  element.style.opacity = '1';
+                  element.style.transform = 'translateY(0)';
+                }, props.delay + (index * props.stagger));
+              });
+            } else {
+              // If no elements found, ensure container is visible
+              if (container.value) {
+                container.value.style.opacity = '1';
               }
-              element.style.transform = 'translateY(30px)';
-              element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-              
-              // Animate with stagger
-              setTimeout(() => {
-                element.style.opacity = '1';
-                element.style.transform = 'translateY(0)';
-              }, props.delay + (index * props.stagger));
-            });
-          } else {
-            // If no elements found, ensure container is visible
-            if (container.value) {
-              container.value.style.opacity = '1';
             }
-          }
+          }, 50);
           
           observer.disconnect();
         }
       });
     },
     { 
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+      threshold: 0.05,
+      rootMargin: '0px 0px -20px 0px'
     }
   );
 
@@ -125,7 +125,7 @@ onMounted(async () => {
     observer.observe(container.value);
   }
   
-  // Fallback: ensure visibility after 2 seconds if animation didn't trigger
+  // Fallback: ensure visibility after 1.5 seconds if animation didn't trigger
   setTimeout(() => {
     if (!hasAnimated.value && container.value) {
       const elements = findAnimateableElements(container.value);
@@ -134,7 +134,7 @@ onMounted(async () => {
         element.style.transform = 'translateY(0)';
       });
     }
-  }, 2000);
+  }, 1500);
 });
 </script>
 
