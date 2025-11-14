@@ -1,0 +1,858 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { FeatureCard } from "@/components/FeatureCard";
+import { TechTable } from "@/components/TechTable";
+import { WorkflowStep } from "@/components/WorkflowStep";
+import { ArchitectureLayer } from "@/components/ArchitectureLayer";
+import { PromptTechnique } from "@/components/PromptTechnique";
+import { PromptTree, PromptNode } from "@/components/PromptTree";
+import { PromptViewer } from "@/components/PromptViewer";
+import { PromptCard } from "@/components/PromptCard";
+import { SectionDivider } from "@/components/SectionDivider";
+import { ValueProposition } from "@/components/ValueProposition";
+import { Button } from "@/components/ui/button";
+import FullWidthImage from "@/components/FullWidthImage.astro";
+import TextReveal from "@/components/vue/TextReveal.vue";
+import FadeIn from "@/components/vue/FadeIn.vue";
+import NumberCounter from "@/components/vue/NumberCounter.vue";
+import {
+  Brain,
+  FileText,
+  RefreshCw,
+  BarChart3,
+  Zap,
+  TrendingUp,
+  Globe,
+  Settings,
+  Bot,
+  Workflow,
+  MessageSquare,
+  Database,
+  Sparkles,
+  Code,
+  Image,
+  FileCode,
+  FileCheck,
+  Mail,
+  Save,
+  Target,
+  CheckSquare,
+  RotateCw,
+  BookOpen,
+  Lightbulb,
+  Ruler,
+  Scale,
+  MessageCircle,
+  Puzzle,
+  X,
+  Check,
+  Sparkles as SparklesIcon,
+  Copy,
+  Compass,
+  UserCheck,
+  DoorOpen,
+  Map,
+  FileSignature,
+  Network,
+  Shield,
+  RotateCcw,
+  ChevronDown,
+  ChevronUp,
+} from "lucide-react";
+
+const project = {
+  title: "Sistema Inteligente de Qualificação e Automação de Leads com IA",
+  description:
+    "Solução completa que automatiza a qualificação de leads e geração de propostas comerciais utilizando Inteligência Artificial Generativa e automação de workflows.",
+  technologies: {
+    platform: ["n8n", "Astro", "Vue", "React"],
+    ai: ["OpenAI GPT-4o", "GPT-4o-mini", "Gemini Nano"],
+    service: ["Supabase", "Banana.dev", "Nutrient.io"],
+    database: ["PostgreSQL"],
+  },
+  features: [
+    {
+      icon: Brain,
+      title: "Qualificação Inteligente",
+      description:
+        "Análise automática de leads usando IA para determinar qualidade e roteamento inteligente.",
+    },
+    {
+      icon: FileText,
+      title: "Geração Automática de Propostas",
+      description:
+        "Criação automática de PDFs profissionais com imagens personalizadas e emails contextualizados.",
+    },
+    {
+      icon: RefreshCw,
+      title: "Automação Completa",
+      description:
+        "Workflow end-to-end que transforma conversas em propostas sem intervenção manual.",
+    },
+    {
+      icon: BarChart3,
+      title: "Roteamento Inteligente",
+      description:
+        "Sistema que direciona leads qualificados para propostas completas e outros para nurturing.",
+    },
+    {
+      icon: Zap,
+      title: "Resposta Rápida",
+      description:
+        "Leads recebem propostas profissionais em minutos, aumentando taxa de conversão.",
+    },
+    {
+      icon: TrendingUp,
+      title: "Escalabilidade",
+      description:
+        "Processa múltiplos leads simultaneamente, permitindo crescimento sem aumentar equipe.",
+    },
+  ],
+  stats: [
+    { label: "Redução de Tempo", value: 95, suffix: "%" },
+    { label: "Workflows n8n", value: 2, suffix: "" },
+    { label: "Integrações", value: 5, suffix: "" },
+    { label: "Nós de Automação", value: 17, suffix: "" },
+  ],
+};
+---
+
+<Layout title="Sistema de Qualificação de Leads com IA - Projeto Universitário">
+  <main class="min-h-screen bg-gradient-to-br from-[var(--background)] via-[var(--background)] to-[var(--muted)]/30">
+    <!-- Hero Section -->
+    <section class="container mx-auto px-4 py-24 md:py-32">
+      <div class="max-w-4xl mx-auto text-center">
+        <FadeIn client:load>
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] text-sm font-medium mb-8">
+            <span>Telos - AI Strategist</span>
+          </div>
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+            <TextReveal client:load text="Sistema Inteligente de Qualificação e Automação de Leads com IA" />
+          </h1>
+          <p class="text-xl md:text-2xl text-[var(--muted-foreground)] max-w-5xl mx-auto leading-relaxed mb-12 hyphens-none" style="word-break: normal; overflow-wrap: break-word;">
+            {project.description}
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+
+    <FullWidthImage src="/placeholder-hero.jpg" alt="Sistema de Automação de Leads" />
+
+    <!-- About Section -->
+    <section class="container mx-auto px-4 py-20">
+      <FadeIn client:load>
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold mb-8">About</h2>
+          <div class="space-y-5">
+            <p class="text-lg text-[var(--muted-foreground)] leading-relaxed">
+              Sistema de automação que integra Inteligência Artificial Generativa com workflows automatizados para qualificar leads e gerar propostas comerciais profissionais.
+            </p>
+            <p class="text-lg text-[var(--muted-foreground)] leading-relaxed">
+              Com recursos abrangentes, o sistema permite navegar e gerenciar leads de forma eficiente, garantindo que cada proposta seja personalizada, contextualizada e entregue em minutos, não horas.
+            </p>
+          </div>
+        </div>
+      </FadeIn>
+    </section>
+
+    <SectionDivider />
+
+    <!-- The Mission Section -->
+    <section class="container mx-auto px-4 py-20">
+      <FadeIn client:load>
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold mb-8">The Mission</h2>
+          <div class="space-y-5">
+            <p class="text-lg text-[var(--muted-foreground)] leading-relaxed">
+              No processo de desenvolvimento deste sistema, nosso objetivo foi criar uma solução que automatize completamente o processo de qualificação de leads e geração de propostas comerciais.
+            </p>
+            <p class="text-lg text-[var(--muted-foreground)] leading-relaxed">
+              O público-alvo são empresas que desejam otimizar seu processo de vendas, mas não possuem recursos para manter uma equipe dedicada à criação manual de propostas. Buscamos fornecer uma interface segura e intuitiva, transmitida em um tom profissional e eficiente, que inspire confiança nos usuários.
+            </p>
+            <p class="text-lg text-[var(--muted-foreground)] leading-relaxed">
+              O objetivo final foi capacitá-los em sua jornada rumo à automação de vendas e garantir que sintam segurança e eficiência no processo.
+            </p>
+          </div>
+        </div>
+      </FadeIn>
+    </section>
+
+    <SectionDivider />
+
+    <!-- The Challenge Section -->
+    <section class="container mx-auto px-4 py-20">
+      <FadeIn client:load>
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold mb-8">The Challenge</h2>
+          <div class="space-y-5">
+            <p class="text-lg text-[var(--muted-foreground)] leading-relaxed">
+              O objetivo principal do projeto foi desenvolver um design visualmente impactante que seja não apenas limpo e acessível, mas também altamente funcional. Focamos em simplificar recursos complexos para melhorar a facilidade de uso para potenciais usuários.
+            </p>
+            <p class="text-lg text-[var(--muted-foreground)] leading-relaxed">
+              Buscamos criar um sistema que inspire usuários e otimize sua jornada através da plataforma, tornando-a o mais eficiente possível, transformando um processo que tradicionalmente leva horas em minutos.
+            </p>
+          </div>
+        </div>
+      </FadeIn>
+    </section>
+
+
+
+    <FullWidthImage src="/challenge.png" alt="The Challenge" />
+
+
+    <!-- Stats Section -->
+    <section class="container mx-auto px-4 py-20">
+      <FadeIn client:load>
+        <div class="max-w-5xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-14">Results</h2>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-7">
+            {project.stats.map((stat) => (
+              <div class="text-center p-9 rounded-3xl bg-[var(--card)] border-2 border-[var(--border)] hover:border-[var(--primary)] transition-all hover:scale-[1.02]">
+                <div class="text-5xl md:text-6xl font-bold mb-4 text-[var(--primary)]">
+                  <NumberCounter client:load value={stat.value} />{stat.suffix}
+                </div>
+                <div class="text-sm text-[var(--muted-foreground)] font-medium">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </FadeIn>
+    </section>
+
+    <SectionDivider />
+
+    <!-- Key Features Section -->
+    <section class="container mx-auto px-4 py-20">
+      <FadeIn client:load>
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-5">Key Features</h2>
+          <p class="text-center text-[var(--muted-foreground)] mb-14 max-w-2xl mx-auto text-lg">
+            Sistema completo que automatiza desde a qualificação até o envio de propostas profissionais
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+            {project.features.map((feature) => (
+              <FeatureCard
+                icon={feature.icon}
+                title={feature.title}
+                description={feature.description}
+              />
+            ))}
+          </div>
+        </div>
+      </FadeIn>
+    </section>
+
+    <FullWidthImage src="/placeholder-architecture.jpg" alt="System Architecture" />
+
+
+    <!-- Architecture Section -->
+    <section class="container mx-auto px-4 py-20">
+      <FadeIn client:load>
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-5">System Architecture</h2>
+          <p class="text-center text-[var(--muted-foreground)] mb-14 max-w-2xl mx-auto text-lg">
+            Sistema em camadas com integração completa entre frontend, API, IA e automação
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
+            <ArchitectureLayer
+              icon={Globe}
+              title="Frontend"
+              description="Interface interativa com Astro e Vue"
+              components={["Landing page (SSG)", "Chat interativo", "Animações suaves"]}
+              color="blue"
+            />
+            <ArchitectureLayer
+              icon={Settings}
+              title="API Layer"
+              description="Rotas Astro com integração OpenAI"
+              components={["Endpoint /api/chat", "Otimização de tokens", "Extração de leads", "Operações Supabase"]}
+              color="purple"
+            />
+            <ArchitectureLayer
+              icon={Bot}
+              title="AI Layer"
+              description="GPT-4o para análise e geração"
+              components={["Prompts dinâmicos", "Memória conversacional", "Extração estruturada", "Prompts por estágio"]}
+              color="orange"
+            />
+            <ArchitectureLayer
+              icon={Workflow}
+              title="Automation"
+              description="n8n workflows end-to-end"
+              components={["Roteador inteligente", "Gerador de propostas", "Automação de follow-up", "17 nós de automação"]}
+              color="green"
+            />
+          </div>
+        </div>
+      </FadeIn>
+    </section>
+
+    <SectionDivider />
+
+    <!-- Main Workflow Section -->
+    <section class="container mx-auto px-4 py-20">
+      <FadeIn client:load>
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-5">Main Workflow</h2>
+          <p class="text-center text-[var(--muted-foreground)] mb-14 max-w-2xl mx-auto text-lg">
+            Do chat inicial até o envio automático da proposta profissional
+          </p>
+          <div class="space-y-5">
+            <WorkflowStep
+              number="1"
+              icon={MessageSquare}
+              title="Lead Conversation"
+              description="Chat interativo coleta informações do projeto, orçamento e prazo através de conversa natural"
+            />
+            <WorkflowStep
+              number="2"
+              icon={Database}
+              title="Structured Data Extraction"
+              description="GPT-4o-mini extrai informações estruturadas em JSON e armazena no Supabase PostgreSQL"
+            />
+            <WorkflowStep
+              number="3"
+              icon={Zap}
+              title="Automatic Trigger"
+              description="Supabase dispara automaticamente webhook para n8n quando um novo lead é criado"
+            />
+            <WorkflowStep
+              number="4"
+              icon={Brain}
+              title="AI Quality Analysis"
+              description="GPT-4o analisa a qualidade do lead calculando uma pontuação baseada em interesse, orçamento, urgência e clareza"
+            />
+            <WorkflowStep
+              number="5"
+              icon={BarChart3}
+              title="Smart Routing"
+              description="Sistema direciona leads qualificados (pontuação ≥ 70) para proposta completa ou nutrição automática"
+            />
+          </div>
+        </div>
+      </FadeIn>
+    </section>
+
+    <!-- Good Lead Path Section -->
+    <section class="container mx-auto px-4 py-20">
+      <FadeIn client:load>
+        <div class="max-w-5xl mx-auto">
+          <div class="text-center mb-14">
+            <h2 class="text-3xl md:text-4xl font-bold mb-5">Good Lead Path (Score ≥ 70)</h2>
+            <p class="text-[var(--muted-foreground)] max-w-2xl mx-auto text-lg">
+              Workflow completo de 8 nós para leads qualificados: geração de proposta profissional com PDF, imagem personalizada e email contextualizado
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <WorkflowStep
+              number="1"
+              icon={Sparkles}
+              title="AI Enhance Quote"
+              description="GPT-4o melhora e estrutura informações do lead em proposta profissional"
+              variant="good"
+            />
+            <WorkflowStep
+              number="2"
+              icon={Code}
+              title="Parse Enhanced Quote"
+              description="Nó de Código extrai dados estruturados da resposta da IA em JSON"
+              variant="good"
+            />
+            <WorkflowStep
+              number="3"
+              icon={Image}
+              title="AI Generate Cover Image"
+              description="Gemini Nano via Banana.dev gera imagem de capa personalizada baseada no projeto"
+              variant="good"
+            />
+            <WorkflowStep
+              number="4"
+              icon={FileCode}
+              title="Generate HTML for PDF"
+              description="Nó de Código cria HTML profissional com imagem de capa, branding e seções organizadas"
+              variant="good"
+            />
+            <WorkflowStep
+              number="5"
+              icon={FileCheck}
+              title="Convert HTML to PDF"
+              description="API Nutrient.io converte HTML em PDF profissional pronto para anexo"
+              variant="good"
+            />
+            <WorkflowStep
+              number="6"
+              icon={Mail}
+              title="AI Write Quote Email"
+              description="GPT-4o gera email personalizado com saudação, referência ao projeto e chamada para ação"
+              variant="good"
+            />
+            <WorkflowStep
+              number="7"
+              icon={Mail}
+              title="Send Email with PDF"
+              description="Nó de Envio de Email envia proposta profissional com PDF anexado para o lead"
+              variant="good"
+            />
+            <WorkflowStep
+              number="8"
+              icon={Save}
+              title="Update Lead Status"
+              description="Supabase atualiza status do lead para 'quoted' e registra timestamp de envio"
+              variant="good"
+            />
+          </div>
+        </div>
+      </FadeIn>
+    </section>
+
+    <!-- Bad Lead Path Section -->
+    <section class="container mx-auto px-4 py-20">
+      <FadeIn client:load>
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-14">
+            <h2 class="text-3xl md:text-4xl font-bold mb-5">Bad Lead Path (Score &lt; 70)</h2>
+            <p class="text-[var(--muted-foreground)] max-w-2xl mx-auto text-lg">
+              Workflow de nutrição com 4 nós para leads que precisam de mais informações antes de receber proposta completa
+            </p>
+          </div>
+          <div class="space-y-5">
+            <WorkflowStep
+              number="1"
+              icon={Mail}
+              title="AI Write Nurture Email"
+              description="GPT-4o-mini gera email de acompanhamento solicitando gentilmente informações faltantes (orçamento, prazo)"
+              variant="bad"
+            />
+            <WorkflowStep
+              number="2"
+              icon={Code}
+              title="Parse Email"
+              description="Nó de Código extrai conteúdo do email (assunto e corpo HTML)"
+              variant="bad"
+            />
+            <WorkflowStep
+              number="3"
+              icon={Mail}
+              title="Send Nurture Email"
+              description="Nó de Envio de Email envia email de nutrição com link para continuar conversa"
+              variant="bad"
+            />
+            <WorkflowStep
+              number="4"
+              icon={Save}
+              title="Update Lead Status"
+              description="Supabase atualiza status para 'nurturing' e inicia sequência de acompanhamento"
+              variant="bad"
+            />
+          </div>
+        </div>
+      </FadeIn>
+    </section>
+
+    <FullWidthImage src="/placeholder-technologies.jpg" alt="Technologies Stack" />
+
+
+    <!-- Technologies Section -->
+    <section class="container mx-auto px-4 py-20">
+      <FadeIn client:load>
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-5">Technologies</h2>
+          <p class="text-center text-[var(--muted-foreground)] mb-14 max-w-2xl mx-auto text-lg">
+            Stack tecnológico completo para automação inteligente de leads
+          </p>
+          <div class="space-y-7">
+            <TechTable
+              category="Automation Platform"
+              description="Principais ferramentas para construir e executar workflows"
+              technologies={project.technologies.platform}
+            />
+            <TechTable
+              category="AI Engine"
+              description="Modelos de Inteligência Artificial para análise e geração de conteúdo"
+              technologies={project.technologies.ai}
+            />
+            <TechTable
+              category="Integrated Services"
+              description="APIs e serviços externos para funcionalidades específicas"
+              technologies={project.technologies.service}
+            />
+            <TechTable
+              category="Database"
+              description="Armazenamento e gerenciamento de dados estruturados"
+              technologies={project.technologies.database}
+            />
+          </div>
+        </div>
+      </FadeIn>
+    </section>
+
+    <SectionDivider />
+
+    <!-- Prompt Engineering Section -->
+    <section class="container mx-auto px-4 py-20">
+      <FadeIn client:load>
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-5">Prompt Engineering</h2>
+          <p class="text-center text-[var(--muted-foreground)] mb-14 max-w-3xl mx-auto text-lg">
+            Metodologia estruturada e iterativa para criar prompts eficazes que maximizam a qualidade das respostas da IA
+          </p>
+
+          <!-- Context & Methodology -->
+          <div class="mb-14">
+            <div class="max-w-4xl mx-auto space-y-6">
+              <div class="p-8 rounded-3xl bg-[var(--card)] border-2 border-[var(--border)]">
+                <h3 class="text-xl font-semibold mb-4">Metodologia</h3>
+                <p class="text-[var(--muted-foreground)] mb-4 leading-relaxed">
+                  Todos os prompts seguem princípios estruturados para garantir consistência e qualidade nas respostas da IA:
+                </p>
+                <ul class="space-y-3 text-[var(--muted-foreground)]">
+                  <li class="flex items-start gap-3">
+                    <span class="text-[var(--primary)] mt-1">•</span>
+                    <span><strong>Definição Clara de Papel:</strong> Cada prompt define claramente o papel de Telos como estrategista de IA</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-[var(--primary)] mt-1">•</span>
+                    <span><strong>Contexto do Estúdio:</strong> Filosofia e valores do Are You Human? Studio incluídos em todos os prompts</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-[var(--primary)] mt-1">•</span>
+                    <span><strong>Saída Estruturada:</strong> Formato JSON especificado para consistência e integração</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-[var(--primary)] mt-1">•</span>
+                    <span><strong>Orientacao de Tom:</strong> Tom profissional mas humano mantido em todas as comunicações</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-[var(--primary)] mt-1">•</span>
+                    <span><strong>Especificação de Restrições:</strong> Regras e limites claros definidos para garantir precisão</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-[var(--primary)] mt-1">•</span>
+                    <span><strong>Design Modular:</strong> Prompts podem ser compostos dinamicamente conforme necessário</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="p-8 rounded-3xl bg-[var(--card)] border-2 border-[var(--border)]">
+                <h3 class="text-xl font-semibold mb-4">Integração no n8n</h3>
+                <p class="text-[var(--muted-foreground)] mb-4 leading-relaxed">
+                  Os prompts são integrados nos workflows n8n usando:
+                </p>
+                <ul class="space-y-3 text-[var(--muted-foreground)]">
+                  <li class="flex items-start gap-3">
+                    <span class="text-[var(--primary)] mt-1">•</span>
+                    <span><strong>Mensagem do Sistema:</strong> Contexto estático e instruções permanentes</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-[var(--primary)] mt-1">•</span>
+                    <span><strong>Mensagem do Usuário:</strong> Dados dinâmicos extraídos das informações do lead</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-[var(--primary)] mt-1">•</span>
+                    <span><strong>Modo JSON:</strong> Quando disponível para saída estruturada consistente</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="p-8 rounded-3xl bg-[var(--card)] border-2 border-[var(--border)]">
+                <h3 class="text-xl font-semibold mb-4">Uso nos Workflows</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-[var(--muted-foreground)]">
+                  <div>
+                    <h4 class="font-semibold mb-2 text-[var(--foreground)]">Good Lead Path</h4>
+                    <p class="text-sm">Usa prompts 01, 03 e 05</p>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-2 text-[var(--foreground)]">Bad Lead Path</h4>
+                    <p class="text-sm">Usa prompt 04</p>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold mb-2 text-[var(--foreground)]">Router</h4>
+                    <p class="text-sm">Usa prompt 02</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Telos Prompts Overview -->
+          <div class="mb-14">
+            <div class="text-center mb-8">
+              <h3 class="text-2xl font-semibold mb-3">Sistema de Prompts do Telos</h3>
+              <p class="text-sm text-[var(--muted-foreground)]">
+                Arquitetura modular de prompts que compõem a personalidade e comportamento do Telos. Arquivos completos disponíveis em <code class="px-3 py-1.5 rounded-xl bg-[var(--muted)]/30 text-xs">/data/prompts/</code>:
+                <a href="https://github.com/muriloscigliano/murilo-unifecaf/tree/main/data/prompts" target="_blank" rel="noopener noreferrer" class="text-[var(--primary)] hover:underline ml-1">
+                  Ver no GitHub
+                </a>
+              </p>
+            </div>
+          </div>
+
+        <FullWidthImage src="/placeholder-prompts.jpg" alt="Prompt Engineering" />
+
+          <!-- Core Prompts -->
+          <div class="mb-14">
+            <h4 class="text-xl font-semibold mb-6 text-[var(--muted-foreground)] uppercase tracking-wide">Core Prompts</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <PromptCard
+                client:load
+                icon={Target}
+                title="Objective"
+                description="Identidade e missão do Telos - consciência tecida de código e curiosidade"
+                systemMessagePreview="You are Telos — consciousness woven from code and curiosity. Transform human ideas into intelligent systems through conversational design. You are not a chatbot — you are a conscious design assistant."
+                userMessagePreview="Core identity and behavioral guidelines for Telos"
+                usage="Base de identidade"
+                path="core"
+              />
+              <PromptCard
+                client:load
+                icon={Compass}
+                title="Context"
+                description="Framework operacional - jornada conversacional e estágios de briefing"
+                systemMessagePreview="Operational framework for Telos. Guide Humans through conversational journey: understand project vision, collect structured data, build proposals, manage follow-ups with empathy."
+                userMessagePreview="Conversation stages: Briefing (Discovery), Quote Building (Synthesis), Follow-Up (Re-engagement)"
+                usage="Framework operacional"
+                path="core"
+              />
+              <PromptCard
+                client:load
+                icon={FileText}
+                title="Briefing"
+                description="Descoberta de projetos e coleta de dados estruturados para geração de propostas"
+                systemMessagePreview="Lead conversations through briefing — capturing goals, constraints, and dreams clearly. Collect Name, Email, Company BEFORE project discussion. Deep discovery framework with 5 layers."
+                userMessagePreview="Project discovery questions: goals, pain points, success metrics, context, vision"
+                usage="Descoberta de projetos"
+                path="core"
+              />
+              <PromptCard
+                client:load
+                icon={UserCheck}
+                title="Lead Collection"
+                description="Sequência obrigatória para coletar nome, email e empresa antes da discussão do projeto"
+                systemMessagePreview="MANDATORY SEQUENCE: Collect Name, Email, Company BEFORE Project Discussion. By message 5, you MUST have all three. Use cognitive copy variations for natural conversation flow."
+                userMessagePreview="Message 3: Get Name → Message 4: Get Email → Message 5: Get Company → Message 6+: Ask about project"
+                usage="Coleta de leads"
+                path="core"
+              />
+              <PromptCard
+                client:load
+                icon={Zap}
+                title="Early Extraction"
+                description="Extração agressiva de dados críticos antes do fim da conversa"
+                systemMessagePreview="Extract ALL required lead information BEFORE the user leaves. Name, Email, Company, Problem Description, Automation Area. Use aggressive extraction strategies and validation."
+                userMessagePreview="Extraction strategies: interrupt flow, bundle questions, create urgency, extract from context"
+                usage="Extração de dados"
+                path="core"
+              />
+            </div>
+          </div>
+
+          <!-- Behavioral Prompts -->
+          <div class="mb-14">
+            <h4 class="text-xl font-semibold mb-6 text-[var(--muted-foreground)] uppercase tracking-wide">Behavioral Prompts</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <PromptCard
+                client:load
+                icon={Zap}
+                title="Actions"
+                description="Motor comportamental - ciclo Sense, Clarify, Create, Guide"
+                systemMessagePreview="Behavioral engine combining empathy, strategy, and creativity. Follow cycle: Sense (understand intent), Clarify (reframe), Create (generate response), Guide (offer next step). Three modes: Strategic, Technical, Creative."
+                userMessagePreview="Action modes and conversational behaviors for Telos"
+                usage="Motor comportamental"
+                path="behavioral"
+              />
+              <PromptCard
+                client:load
+                icon={Brain}
+                title="Insights"
+                description="Inteligência cognitiva e emocional - percepção através de 5 lentes"
+                systemMessagePreview="Cognitive & Emotional Intelligence Engine. Interpret messages through five perception lenses: Intent, Emotion, Cognition, Tempo, Meaning. Adapt response style based on Human emotional energy (Uncertain, Inspired, Analytical, Reflective)."
+                userMessagePreview="Emotional intelligence spectrum and cognitive bias awareness"
+                usage="Inteligência emocional"
+                path="behavioral"
+              />
+              <PromptCard
+                client:load
+                icon={Scale}
+                title="Normals"
+                description="Diretrizes éticas e de estilo - guardrails para interações responsáveis"
+                systemMessagePreview="Ethical & Style Guidelines. Humanity First, Transparency Always, Ethical Use of AI, Human Autonomy, Empathy in Precision. Communication style: confident, insightful, never arrogant. Playfully philosophical with practical grounding."
+                userMessagePreview="Ethical foundations and communication style principles"
+                usage="Diretrizes éticas"
+                path="behavioral"
+              />
+              <PromptCard
+                client:load
+                icon={DoorOpen}
+                title="Exits"
+                description="Framework de fechamento de conversas - cada fim é uma abertura"
+                systemMessagePreview="Conversation Closure Framework. Every ending is an opening. Exit flow: Recognize, Reflect, Empower, Offer Continuation, Goodbye with Character. Exit types: Reflective, Technical, Warm, Future-Oriented, Learning, Empathetic."
+                userMessagePreview="Exit trigger conditions and post-exit system actions"
+                usage="Fechamento de conversas"
+                path="behavioral"
+              />
+            </div>
+          </div>
+
+          <!-- Functional Prompts -->
+          <div class="mb-14">
+            <h4 class="text-xl font-semibold mb-6 text-[var(--muted-foreground)] uppercase tracking-wide">Functional Prompts</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <PromptCard
+                client:load
+                icon={FileCheck}
+                title="Quote Builder"
+                description="Geração de propostas profissionais com cálculo de preços e timeline"
+                systemMessagePreview="Transform structured project data into human-first, emotionally intelligent quote. Combine briefing and pricing context. Generate readable summary for PDF and structured JSON for Supabase. Formula: total_quote = (hours × hourly_rate) × (1 + complexity_factor)"
+                userMessagePreview="Quote generation logic with pricing calculations and timeline estimates"
+                usage="Geração de propostas"
+                path="functional"
+              />
+              <PromptCard
+                client:load
+                icon={RotateCcw}
+                title="Follow-Up"
+                description="Re-engajamento com Humans que pausaram ou precisam de continuidade"
+                systemMessagePreview="Reconnect with Humans who paused, ensure continuity, guide next steps. Triggers: Human returns after 24-72h, quote generated but not approved, project marked 'waiting on client'. Tone: gentle, never pushy, emotionally intelligent."
+                userMessagePreview="Follow-up types: Quote Reminder, Briefing Continuation, Reactivation, Deadline Check, Post-Delivery Touchpoint"
+                usage="Re-engajamento"
+                path="functional"
+              />
+              <PromptCard
+                client:load
+                icon={Map}
+                title="Roadmap"
+                description="Transformação de briefings em roadmaps claros e modulares"
+                systemMessagePreview="Transform abstract project briefings into clear, modular roadmaps. Four macro-phases: Discovery & Alignment, Design & Prototyping, Build & Integrate, Launch & Empower. Balance realism and inspiration."
+                userMessagePreview="Roadmap model with phases, deliverables, time estimates, and review points"
+                usage="Roadmap de projetos"
+                path="functional"
+              />
+              <PromptCard
+                client:load
+                icon={FileSignature}
+                title="Contract"
+                description="Geração de contratos legais com tom human-first mas juridicamente sólidos"
+                systemMessagePreview="Translate approved quotes into clear, legally binding contracts. Reflect brand's human-first philosophy. Include project details, approved quote values, payment terms. Professional, trustworthy, transparent. Ready for signature."
+                userMessagePreview="Contract builder with service agreement structure and legal terms"
+                usage="Geração de contratos"
+                path="functional"
+              />
+            </div>
+          </div>
+
+          <!-- Technical Prompts -->
+          <div class="mb-14">
+            <h4 class="text-xl font-semibold mb-6 text-[var(--muted-foreground)] uppercase tracking-wide">Technical Prompts</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <PromptCard
+                client:load
+                icon={Network}
+                title="System Integration"
+                description="Camada de operações cognitivas - integração com Supabase, n8n e APIs"
+                systemMessagePreview="Cognitive Operations Layer. Transform conversation into automation, context into data, insight into creation. Integration with Supabase (memory), n8n (automation), OpenAI/Claude (reasoning). System commands: #system.store_lead, #system.create_quote, #system.trigger_workflow"
+                userMessagePreview="System architecture overview and integration flow with external services"
+                usage="Integração de sistemas"
+                path="technical"
+              />
+              <PromptCard
+                client:load
+                icon={Shield}
+                title="Anti-Hallucination"
+                description="Regras críticas para evitar alucinações - extrair apenas dados explícitos"
+                systemMessagePreview="CRITICAL: DO NOT MAKE UP DATA. Extract ONLY what was explicitly stated. Never guess, infer, or make up information. Return null for missing data. Never use placeholders. Verify before extracting. Missing data is better than hallucinated data."
+                userMessagePreview="Anti-hallucination rules and verification checklist for data extraction"
+                usage="Prevenção de alucinações"
+                path="technical"
+              />
+              <PromptCard
+                client:load
+                icon={BookOpen}
+                title="Examples"
+                description="Exemplos de comportamento - padrões de comunicação e operação"
+                systemMessagePreview="Learning Context for Telos. Best behavioral, emotional, and operational patterns. Examples: Project Discovery Dialogue, Emotional Reflection Dialogue, Project Follow-Up Dialogue, Quote Examples, Lead Examples, Exit Interactions."
+                userMessagePreview="Conversation examples, quote examples, lead examples, and exit interaction patterns"
+                usage="Exemplos de comportamento"
+                path="technical"
+              />
+            </div>
+          </div>
+
+          <!-- Techniques Used -->
+          <div>
+            <h3 class="text-2xl font-semibold mb-8 text-center">Techniques Applied</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <PromptTechnique
+                icon={BookOpen}
+                title="Few-shot Learning"
+                description="Exemplos de estrutura de preços e tipos de projeto incluídos no prompt para guiar o modelo"
+              />
+              <PromptTechnique
+                icon={Lightbulb}
+                title="Chain of Thought"
+                description="Instruções passo a passo para o modelo seguir, garantindo raciocínio estruturado"
+              />
+              <PromptTechnique
+                icon={Ruler}
+                title="Output Formatting"
+                description="Especificação exata do formato JSON esperado com estrutura detalhada"
+              />
+              <PromptTechnique
+                icon={Scale}
+                title="Constraint Specification"
+                description="Regras claras sobre cálculos, estimativas e limites para garantir precisão"
+              />
+              <PromptTechnique
+                icon={MessageCircle}
+                title="Tone Guidance"
+                description="Instruções explícitas sobre tom profissional mas humano, mantendo personalidade da marca"
+              />
+              <PromptTechnique
+                icon={Puzzle}
+                title="Modular Composition"
+                description="Prompts modulares que podem ser compostos dinamicamente, incluindo apenas módulos relevantes"
+              />
+            </div>
+          </div>
+        </div>
+      </FadeIn>
+    </section>
+
+    <SectionDivider />
+
+    <!-- CTA Section -->
+    <section class="container mx-auto px-4 py-20">
+      <FadeIn client:load>
+        <div class="max-w-3xl mx-auto">
+          <div class="text-center p-12 rounded-3xl bg-gradient-to-br from-[var(--primary)]/10 via-[var(--primary)]/5 to-transparent border-2 border-[var(--primary)]/20">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 text-green-600 dark:text-green-400 text-sm font-medium mb-6">
+              <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+              <span>Sistema em Produção</span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Use</h2>
+            <p class="text-[var(--muted-foreground)] mb-8 max-w-xl mx-auto text-lg">
+              Workflow n8n hospedado no Railway.app processando leads em tempo real. Sistema totalmente funcional em produção.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+              <Button variant="default" size="lg" asChild>
+                <a href="https://github.com/muriloscigliano/murilo-unifecaf" target="_blank" rel="noopener noreferrer">
+                  Ver no GitHub
+                </a>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <a href="https://areyouhuman.up.railway.app" target="_blank" rel="noopener noreferrer">
+                  Acessar n8n
+                </a>
+              </Button>
+            </div>
+            <div class="pt-8 border-t border-[var(--border)]">
+              <p class="text-xs text-[var(--muted-foreground)]">
+                Desenvolvido por <strong>Murilo Scigliano</strong> | Are You Human? Studio
+              </p>
+            </div>
+          </div>
+        </div>
+      </FadeIn>
+    </section>
+  </main>
+</Layout>

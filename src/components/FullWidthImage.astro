@@ -1,0 +1,21 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  class?: string;
+}
+
+const { src, alt, class: className = "" } = Astro.props;
+---
+
+<div class={`w-full my-12 flex justify-center ${className}`}>
+  <div class="w-full max-w-[1200px] bg-[var(--muted)]/30 rounded-[36px] overflow-hidden">
+    <img
+      src={src}
+      alt={alt}
+      class="w-full h-[700px] rounded-[36px] object-cover"
+      loading="lazy"
+    />
+  </div>
+</div>
+
