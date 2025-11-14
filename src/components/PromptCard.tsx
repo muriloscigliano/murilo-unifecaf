@@ -52,19 +52,19 @@ export function PromptCard({
 
         <div className="space-y-4">
           <div className="p-4 rounded-xl bg-[var(--muted)]/40 border border-[var(--border)]/50">
-            <div className="text-xs font-semibold text-[var(--foreground)] mb-2 uppercase tracking-wide">
+            <div className="text-sm font-semibold text-[var(--foreground)] mb-2 uppercase tracking-wide">
               System Message
             </div>
-            <p className="text-xs text-[var(--muted-foreground)] leading-relaxed line-clamp-3">
+            <p className="text-[16px] text-[var(--muted-foreground)] leading-relaxed line-clamp-3">
               {systemMessagePreview}
             </p>
           </div>
 
           <div className="p-4 rounded-xl bg-[var(--muted)]/40 border border-[var(--border)]/50">
-            <div className="text-xs font-semibold text-[var(--foreground)] mb-2 uppercase tracking-wide">
+            <div className="text-sm font-semibold text-[var(--foreground)] mb-2 uppercase tracking-wide">
               User Message Template
             </div>
-            <p className="text-xs text-[var(--muted-foreground)] leading-relaxed line-clamp-2 font-mono">
+            <p className="text-[16px] text-[var(--muted-foreground)] leading-relaxed line-clamp-2 font-mono">
               {userMessagePreview}
             </p>
           </div>
