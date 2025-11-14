@@ -21,25 +21,27 @@ const {
 ---
 
 <div class="w-full max-w-[1200px] bg-[var(--muted)]/30 rounded-[36px] overflow-hidden flex justify-center mx-auto my-12 fade-in-video relative" data-fade-in-video>
-  <video
-    class="w-full h-[700px] rounded-[36px] object-cover bg-black"
-    autoplay={autoplay}
-    loop={loop}
-    muted={muted}
-    playsinline={playsinline}
-    preload="metadata"
-    poster={poster}
-    aria-label={alt}
-  >
-    <source src={src} type="video/mp4" />
-    <source src={src} type="video/webm" />
-    Your browser does not support the video tag.
-  </video>
-  <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-    <div class="w-20 h-20 rounded-full bg-white/10 backdrop-blur-md border-2 border-white/20 flex items-center justify-center">
-      <svg class="w-10 h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M8 5v14l11-7z"/>
-      </svg>
+  <div class="relative w-full aspect-[16/9] md:aspect-[16/10]">
+    <video
+      class="w-full h-full rounded-[36px] object-cover bg-black"
+      autoplay={autoplay}
+      loop={loop}
+      muted={muted}
+      playsinline={playsinline}
+      preload="metadata"
+      poster={poster}
+      aria-label={alt}
+    >
+      <source src={src} type="video/mp4" />
+      <source src={src} type="video/webm" />
+      Your browser does not support the video tag.
+    </video>
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <div class="w-20 h-20 rounded-full bg-white/10 backdrop-blur-md border-2 border-white/20 flex items-center justify-center">
+        <svg class="w-10 h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+      </div>
     </div>
   </div>
 </div>
