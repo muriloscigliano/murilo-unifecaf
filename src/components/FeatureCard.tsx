@@ -9,7 +9,7 @@ interface FeatureCardProps {
 
 export function FeatureCard({ icon: Icon, title, description }: FeatureCardProps) {
   return (
-    <Card className="border-2 border-[var(--border)] bg-[var(--card)] transition-all hover:border-[var(--primary)] hover:scale-[1.02] rounded-3xl">
+    <Card className="border border-[var(--border)]/60 bg-[var(--card)] transition-all hover:border-[var(--primary)]/30 hover:scale-[1.01] rounded-3xl">
       <CardContent className="p-8">
         <Icon className="w-10 h-10 mb-5 text-[var(--muted-foreground)] stroke-[1.5]" />
         <h3 className="text-xl font-semibold mb-3">{title}</h3>

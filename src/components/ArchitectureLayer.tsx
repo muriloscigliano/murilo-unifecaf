@@ -9,11 +9,11 @@ interface ArchitectureLayerProps {
 }
 
 const colorStyles = {
-  blue: "from-blue-500/10 to-blue-600/10 border-blue-500/20",
-  purple: "from-purple-500/10 to-purple-600/10 border-purple-500/20",
-  orange: "from-orange-500/10 to-orange-600/10 border-orange-500/20",
-  green: "from-green-500/10 to-green-600/10 border-green-500/20",
-  cyan: "from-cyan-500/10 to-cyan-600/10 border-cyan-500/20",
+  blue: "from-blue-500/5 to-blue-600/5 border-blue-500/12",
+  purple: "from-purple-500/5 to-purple-600/5 border-purple-500/12",
+  orange: "from-orange-500/5 to-orange-600/5 border-orange-500/12",
+  green: "from-green-500/5 to-green-600/5 border-green-500/12",
+  cyan: "from-cyan-500/5 to-cyan-600/5 border-cyan-500/12",
 };
 
 export function ArchitectureLayer({
@@ -25,7 +25,7 @@ export function ArchitectureLayer({
 }: ArchitectureLayerProps) {
   return (
     <div
-      className={`p-8 rounded-3xl bg-gradient-to-br ${colorStyles[color]} border-2 transition-all hover:scale-[1.02]`}
+      className={`p-8 rounded-3xl bg-gradient-to-br ${colorStyles[color]} border transition-all hover:scale-[1.01]`}
     >
       <Icon className="w-12 h-12 mb-5 text-[var(--muted-foreground)] stroke-[1.5]" />
       <h3 className="font-semibold mb-3 text-lg">{title}</h3>

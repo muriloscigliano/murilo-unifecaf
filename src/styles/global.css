@@ -9,22 +9,22 @@
   --color-popover-foreground: 222.2 84% 4.9%;
   --color-primary: 222.2 47.4% 11.2%;
   --color-primary-foreground: 210 40% 98%;
-  --color-secondary: 210 40% 96.1%;
+  --color-secondary: 210 40% 98.5%;
   --color-secondary-foreground: 222.2 47.4% 11.2%;
-  --color-muted: 210 40% 96.1%;
+  --color-muted: 210 40% 98.5%;
   --color-muted-foreground: 215.4 16.3% 46.9%;
-  --color-accent: 210 40% 96.1%;
+  --color-accent: 210 40% 98.5%;
   --color-accent-foreground: 222.2 47.4% 11.2%;
   --color-destructive: 0 84.2% 60.2%;
   --color-destructive-foreground: 210 40% 98%;
-  --color-border: 214.3 31.8% 91.4%;
-  --color-input: 214.3 31.8% 91.4%;
+  --color-border: 214.3 31.8% 94%;
+  --color-input: 214.3 31.8% 94%;
   --color-ring: 222.2 84% 4.9%;
-  --radius: 0.5rem;
+  --radius: 0.75rem;
 }
 
 :root {
-  --background: hsl(var(--color-background));
+  --background: hsl(0 0% 98% / 1);
   --foreground: hsl(var(--color-foreground));
   --card: hsl(var(--color-card));
   --card-foreground: hsl(var(--color-card-foreground));
@@ -50,7 +50,7 @@
 }
 
 body {
-  background-color: hsl(var(--color-background));
+  background-color: hsl(0 0% 99% / 1);
   color: hsl(var(--color-foreground));
   font-feature-settings: "kern" 1, "liga" 1;
   -webkit-font-smoothing: antialiased;

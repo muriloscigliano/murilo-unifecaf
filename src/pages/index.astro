@@ -1,20 +1,21 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { FeatureCard } from "@/components/FeatureCard";
-import { TechTable } from "@/components/TechTable";
+import { TechCard } from "@/components/TechCard";
 import { WorkflowStep } from "@/components/WorkflowStep";
 import { ArchitectureLayer } from "@/components/ArchitectureLayer";
 import { PromptTechnique } from "@/components/PromptTechnique";
-import { PromptTree, PromptNode } from "@/components/PromptTree";
-import { PromptViewer } from "@/components/PromptViewer";
+// import { PromptTree, PromptNode } from "@/components/PromptTree";
+// import { PromptViewer } from "@/components/PromptViewer";
 import { PromptCard } from "@/components/PromptCard";
 import { SectionDivider } from "@/components/SectionDivider";
-import { ValueProposition } from "@/components/ValueProposition";
+// import { ValueProposition } from "@/components/ValueProposition";
 import { Button } from "@/components/ui/button";
 import FullWidthImage from "@/components/FullWidthImage.astro";
-import TextReveal from "@/components/vue/TextReveal.vue";
 import FadeIn from "@/components/vue/FadeIn.vue";
 import NumberCounter from "@/components/vue/NumberCounter.vue";
+import TextRevealLines from "@/components/vue/TextRevealLines.vue";
+import StaggerIn from "@/components/vue/StaggerIn.vue";
 import {
   Brain,
   FileText,
@@ -59,6 +60,7 @@ import {
   ChevronDown,
   ChevronUp,
 } from "lucide-react";
+import FullWidthVideo from "@/components/FullWidthVideo.astro";
 
 const project = {
   title: "Sistema Inteligente de Qualificação e Automação de Leads com IA",
@@ -66,8 +68,8 @@ const project = {
     "Solução completa que automatiza a qualificação de leads e geração de propostas comerciais utilizando Inteligência Artificial Generativa e automação de workflows.",
   technologies: {
     platform: ["n8n", "Astro", "Vue", "React"],
-    ai: ["OpenAI GPT-4o", "GPT-4o-mini", "Gemini Nano"],
-    service: ["Supabase", "Banana.dev", "Nutrient.io"],
+    ai: ["OpenAI GPT-5", "GPT-4o-mini", "Gemini Flash 2.5"],
+    service: ["Supabase", "Vercel", "Nutrient.io"],
     database: ["PostgreSQL"],
   },
   features: [
@@ -118,32 +120,40 @@ const project = {
 ---
 
 <Layout title="Sistema de Qualificação de Leads com IA - Projeto Universitário">
-  <main class="min-h-screen bg-gradient-to-br from-[var(--background)] via-[var(--background)] to-[var(--muted)]/30">
+  <main class="min-h-screen bg-[var(--background)]">
     <!-- Hero Section -->
-    <section class="container mx-auto px-4 py-24 md:py-32">
-      <div class="max-w-4xl mx-auto text-center">
+    <section class="container mx-auto px-4 py-16 md:py-20">
+      <div class="max-w-6xl mx-auto text-center">
         <FadeIn client:load>
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] text-sm font-medium mb-8">
+          <div class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-[var(--primary)] text-sm font-medium mb-8 backdrop-blur-sm transition-all hover:bg-[var(--primary)]/15 hover:border-[var(--primary)]/30">
+            <div class="w-2 h-2 rounded-full bg-[var(--primary)] animate-pulse"></div>
             <span>Telos - AI Strategist</span>
           </div>
-          <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            <TextReveal client:load text="Sistema Inteligente de Qualificação e Automação de Leads com IA" />
-          </h1>
-          <p class="text-xl md:text-2xl text-[var(--muted-foreground)] max-w-5xl mx-auto leading-relaxed mb-12 hyphens-none" style="word-break: normal; overflow-wrap: break-word;">
+          <TextRevealLines client:load>
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+              <span class="block reveal-line">Sistema Inteligente de</span>
+              <span class="block reveal-line">Qualificação e Automação</span>
+              <span class="block reveal-line">de Leads com IA</span>
+            </h1>
+          </TextRevealLines>
+          <p class="text-xl md:text-2xl text-[var(--muted-foreground)] max-w-6xl mx-auto leading-relaxed hyphens-none" style="word-break: normal; overflow-wrap: break-word;">
             {project.description}
           </p>
         </FadeIn>
       </div>
     </section>
 
-    <FullWidthImage src="/placeholder-hero.jpg" alt="Sistema de Automação de Leads" />
+    <FullWidthImage src="/img/cover-generated-min.jpg" alt="Telos AI Strategist" />
 
     <!-- About Section -->
     <section class="container mx-auto px-4 py-20">
-      <FadeIn client:load>
+      <StaggerIn client:load stagger={100}>
         <div class="max-w-4xl mx-auto">
-          <h2 class="text-3xl md:text-4xl font-bold mb-8">About</h2>
+          <h2 class="text-3xl md:text-4xl font-bold mb-8">Sobre</h2>
           <div class="space-y-5">
+            <p class="text-lg text-[var(--muted-foreground)] leading-relaxed">
+              Telos é um assistente de IA estrategista que qualifica leads via chat conversacional, extrai dados estruturados e gera propostas comerciais personalizadas automaticamente para empresas que querem usar AI em seus negócios.
+            </p>
             <p class="text-lg text-[var(--muted-foreground)] leading-relaxed">
               Sistema de automação que integra Inteligência Artificial Generativa com workflows automatizados para qualificar leads e gerar propostas comerciais profissionais.
             </p>
@@ -152,16 +162,16 @@ const project = {
             </p>
           </div>
         </div>
-      </FadeIn>
+      </StaggerIn>
     </section>
 
     <SectionDivider />
 
     <!-- The Mission Section -->
     <section class="container mx-auto px-4 py-20">
-      <FadeIn client:load>
+      <StaggerIn client:load stagger={100}>
         <div class="max-w-4xl mx-auto">
-          <h2 class="text-3xl md:text-4xl font-bold mb-8">The Mission</h2>
+          <h2 class="text-3xl md:text-4xl font-bold mb-8">A Missão</h2>
           <div class="space-y-5">
             <p class="text-lg text-[var(--muted-foreground)] leading-relaxed">
               No processo de desenvolvimento deste sistema, nosso objetivo foi criar uma solução que automatize completamente o processo de qualificação de leads e geração de propostas comerciais.
@@ -174,16 +184,16 @@ const project = {
             </p>
           </div>
         </div>
-      </FadeIn>
+      </StaggerIn>
     </section>
 
     <SectionDivider />
 
     <!-- The Challenge Section -->
     <section class="container mx-auto px-4 py-20">
-      <FadeIn client:load>
+      <StaggerIn client:load stagger={100}>
         <div class="max-w-4xl mx-auto">
-          <h2 class="text-3xl md:text-4xl font-bold mb-8">The Challenge</h2>
+          <h2 class="text-3xl md:text-4xl font-bold mb-8">O Desafio</h2>
           <div class="space-y-5">
             <p class="text-lg text-[var(--muted-foreground)] leading-relaxed">
               O objetivo principal do projeto foi desenvolver um design visualmente impactante que seja não apenas limpo e acessível, mas também altamente funcional. Focamos em simplificar recursos complexos para melhorar a facilidade de uso para potenciais usuários.
@@ -193,22 +203,19 @@ const project = {
             </p>
           </div>
         </div>
-      </FadeIn>
+      </StaggerIn>
     </section>
 
-
-
-    <FullWidthImage src="/challenge.png" alt="The Challenge" />
-
+	 <FullWidthVideo src="#" alt="The Challenge" />
 
     <!-- Stats Section -->
     <section class="container mx-auto px-4 py-20">
-      <FadeIn client:load>
-        <div class="max-w-5xl mx-auto">
-          <h2 class="text-3xl md:text-4xl font-bold text-center mb-14">Results</h2>
+      <StaggerIn client:load stagger={100}>
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-14">Resultados</h2>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-7">
             {project.stats.map((stat) => (
-              <div class="text-center p-9 rounded-3xl bg-[var(--card)] border-2 border-[var(--border)] hover:border-[var(--primary)] transition-all hover:scale-[1.02]">
+              <div class="text-center p-9 rounded-3xl bg-[var(--card)] border border-[var(--border)]/60 hover:border-[var(--primary)]/30 transition-all hover:scale-[1.01]">
                 <div class="text-5xl md:text-6xl font-bold mb-4 text-[var(--primary)]">
                   <NumberCounter client:load value={stat.value} />{stat.suffix}
                 </div>
@@ -217,16 +224,16 @@ const project = {
             ))}
           </div>
         </div>
-      </FadeIn>
+      </StaggerIn>
     </section>
 
     <SectionDivider />
 
     <!-- Key Features Section -->
     <section class="container mx-auto px-4 py-20">
-      <FadeIn client:load>
+      <StaggerIn client:load stagger={80}>
         <div class="max-w-6xl mx-auto">
-          <h2 class="text-3xl md:text-4xl font-bold text-center mb-5">Key Features</h2>
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-5">Principais Funcionalidades</h2>
           <p class="text-center text-[var(--muted-foreground)] mb-14 max-w-2xl mx-auto text-lg">
             Sistema completo que automatiza desde a qualificação até o envio de propostas profissionais
           </p>
@@ -240,17 +247,17 @@ const project = {
             ))}
           </div>
         </div>
-      </FadeIn>
+      </StaggerIn>
     </section>
 
-    <FullWidthImage src="/placeholder-architecture.jpg" alt="System Architecture" />
+	<FullWidthImage src="/img/areyouhuman-telos.jpg" alt="Telos AI Strategist - Are You Human Chat Interface" />
 
 
     <!-- Architecture Section -->
     <section class="container mx-auto px-4 py-20">
-      <FadeIn client:load>
+      <StaggerIn client:load stagger={100}>
         <div class="max-w-6xl mx-auto">
-          <h2 class="text-3xl md:text-4xl font-bold text-center mb-5">System Architecture</h2>
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-5">Arquitetura do Sistema</h2>
           <p class="text-center text-[var(--muted-foreground)] mb-14 max-w-2xl mx-auto text-lg">
             Sistema em camadas com integração completa entre frontend, API, IA e automação
           </p>
@@ -272,7 +279,7 @@ const project = {
             <ArchitectureLayer
               icon={Bot}
               title="AI Layer"
-              description="GPT-4o para análise e geração"
+              description="GPT-5 para análise e geração no chat"
               components={["Prompts dinâmicos", "Memória conversacional", "Extração estruturada", "Prompts por estágio"]}
               color="orange"
             />
@@ -285,16 +292,16 @@ const project = {
             />
           </div>
         </div>
-      </FadeIn>
+      </StaggerIn>
     </section>
 
-    <SectionDivider />
+	<SectionDivider />
 
     <!-- Main Workflow Section -->
     <section class="container mx-auto px-4 py-20">
-      <FadeIn client:load>
-        <div class="max-w-4xl mx-auto">
-          <h2 class="text-3xl md:text-4xl font-bold text-center mb-5">Main Workflow</h2>
+      <StaggerIn client:load stagger={100}>
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-5">Workflow Principal</h2>
           <p class="text-center text-[var(--muted-foreground)] mb-14 max-w-2xl mx-auto text-lg">
             Do chat inicial até o envio automático da proposta profissional
           </p>
@@ -303,7 +310,7 @@ const project = {
               number="1"
               icon={MessageSquare}
               title="Lead Conversation"
-              description="Chat interativo coleta informações do projeto, orçamento e prazo através de conversa natural"
+              description="Chat interativo com GPT-5 coleta informações do projeto, orçamento e prazo através de conversa natural"
             />
             <WorkflowStep
               number="2"
@@ -321,7 +328,7 @@ const project = {
               number="4"
               icon={Brain}
               title="AI Quality Analysis"
-              description="GPT-4o analisa a qualidade do lead calculando uma pontuação baseada em interesse, orçamento, urgência e clareza"
+              description="GPT-4o-mini analisa a qualidade do lead calculando uma pontuação baseada em interesse, orçamento, urgência e clareza"
             />
             <WorkflowStep
               number="5"
@@ -331,87 +338,94 @@ const project = {
             />
           </div>
         </div>
-      </FadeIn>
+      </StaggerIn>
     </section>
+	
+
+	<FullWidthImage src="/img/n8n-workflow.png" alt="n8n Workflow Automation" />
 
     <!-- Good Lead Path Section -->
     <section class="container mx-auto px-4 py-20">
-      <FadeIn client:load>
-        <div class="max-w-5xl mx-auto">
+      <StaggerIn client:load stagger={80}>
+        <div class="max-w-6xl mx-auto">
           <div class="text-center mb-14">
-            <h2 class="text-3xl md:text-4xl font-bold mb-5">Good Lead Path (Score ≥ 70)</h2>
+            <h2 class="text-3xl md:text-4xl font-bold mb-5">Caminho de Leads Qualificados (Score ≥ 70)</h2>
             <p class="text-[var(--muted-foreground)] max-w-2xl mx-auto text-lg">
               Workflow completo de 8 nós para leads qualificados: geração de proposta profissional com PDF, imagem personalizada e email contextualizado
             </p>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <WorkflowStep
-              number="1"
-              icon={Sparkles}
-              title="AI Enhance Quote"
-              description="GPT-4o melhora e estrutura informações do lead em proposta profissional"
-              variant="good"
-            />
-            <WorkflowStep
-              number="2"
-              icon={Code}
-              title="Parse Enhanced Quote"
-              description="Nó de Código extrai dados estruturados da resposta da IA em JSON"
-              variant="good"
-            />
-            <WorkflowStep
-              number="3"
-              icon={Image}
-              title="AI Generate Cover Image"
-              description="Gemini Nano via Banana.dev gera imagem de capa personalizada baseada no projeto"
-              variant="good"
-            />
-            <WorkflowStep
-              number="4"
-              icon={FileCode}
-              title="Generate HTML for PDF"
-              description="Nó de Código cria HTML profissional com imagem de capa, branding e seções organizadas"
-              variant="good"
-            />
-            <WorkflowStep
-              number="5"
-              icon={FileCheck}
-              title="Convert HTML to PDF"
-              description="API Nutrient.io converte HTML em PDF profissional pronto para anexo"
-              variant="good"
-            />
-            <WorkflowStep
-              number="6"
-              icon={Mail}
-              title="AI Write Quote Email"
-              description="GPT-4o gera email personalizado com saudação, referência ao projeto e chamada para ação"
-              variant="good"
-            />
-            <WorkflowStep
-              number="7"
-              icon={Mail}
-              title="Send Email with PDF"
-              description="Nó de Envio de Email envia proposta profissional com PDF anexado para o lead"
-              variant="good"
-            />
-            <WorkflowStep
-              number="8"
-              icon={Save}
-              title="Update Lead Status"
-              description="Supabase atualiza status do lead para 'quoted' e registra timestamp de envio"
-              variant="good"
-            />
+            <div class="space-y-5">
+              <WorkflowStep
+                number="1"
+                icon={Sparkles}
+                title="AI Enhance Quote"
+                description="GPT-4o-mini melhora e estrutura informações do lead em proposta profissional"
+                variant="good"
+              />
+              <WorkflowStep
+                number="2"
+                icon={Code}
+                title="Parse Enhanced Quote"
+                description="Nó de Código extrai dados estruturados da resposta da IA em JSON"
+                variant="good"
+              />
+              <WorkflowStep
+                number="3"
+                icon={Image}
+                title="AI Generate Cover Image"
+                description="Gemini Flash 2.5 gera imagem de capa personalizada baseada no projeto"
+                variant="good"
+              />
+              <WorkflowStep
+                number="4"
+                icon={FileCode}
+                title="Generate HTML for PDF"
+                description="Nó de Código cria HTML profissional com imagem de capa, branding e seções organizadas"
+                variant="good"
+              />
+            </div>
+            <div class="space-y-5">
+              <WorkflowStep
+                number="5"
+                icon={FileCheck}
+                title="Convert HTML to PDF"
+                description="API Nutrient.io converte HTML em PDF profissional pronto para anexo"
+                variant="good"
+              />
+              <WorkflowStep
+                number="6"
+                icon={Mail}
+                title="AI Write Quote Email"
+                description="GPT-4o-mini gera email personalizado com saudação, referência ao projeto e chamada para ação"
+                variant="good"
+              />
+              <WorkflowStep
+                number="7"
+                icon={Mail}
+                title="Send Email with PDF"
+                description="Nó de Envio de Email envia proposta profissional com PDF anexado para o lead"
+                variant="good"
+              />
+              <WorkflowStep
+                number="8"
+                icon={Save}
+                title="Update Lead Status"
+                description="Supabase atualiza status do lead para 'quoted' e registra timestamp de envio"
+                variant="good"
+              />
+            </div>
           </div>
         </div>
-      </FadeIn>
+      </StaggerIn>
     </section>
 
     <!-- Bad Lead Path Section -->
     <section class="container mx-auto px-4 py-20">
-      <FadeIn client:load>
-        <div class="max-w-4xl mx-auto">
+      <StaggerIn client:load stagger={100}>
+        <div class="max-w-6xl mx-auto">
           <div class="text-center mb-14">
-            <h2 class="text-3xl md:text-4xl font-bold mb-5">Bad Lead Path (Score &lt; 70)</h2>
+            <h2 class="text-3xl md:text-4xl font-bold mb-5">Caminho de Leads Não Qualificados (Score &lt; 70)</h2>
             <p class="text-[var(--muted-foreground)] max-w-2xl mx-auto text-lg">
               Workflow de nutrição com 4 nós para leads que precisam de mais informações antes de receber proposta completa
             </p>
@@ -447,51 +461,172 @@ const project = {
             />
           </div>
         </div>
-      </FadeIn>
+      </StaggerIn>
     </section>
-
-    <FullWidthImage src="/placeholder-technologies.jpg" alt="Technologies Stack" />
-
 
     <!-- Technologies Section -->
     <section class="container mx-auto px-4 py-20">
-      <FadeIn client:load>
+      <StaggerIn client:load stagger={100}>
         <div class="max-w-6xl mx-auto">
-          <h2 class="text-3xl md:text-4xl font-bold text-center mb-5">Technologies</h2>
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-5">Tecnologias</h2>
           <p class="text-center text-[var(--muted-foreground)] mb-14 max-w-2xl mx-auto text-lg">
             Stack tecnológico completo para automação inteligente de leads
           </p>
-          <div class="space-y-7">
-            <TechTable
-              category="Automation Platform"
-              description="Principais ferramentas para construir e executar workflows"
-              technologies={project.technologies.platform}
-            />
-            <TechTable
-              category="AI Engine"
-              description="Modelos de Inteligência Artificial para análise e geração de conteúdo"
-              technologies={project.technologies.ai}
-            />
-            <TechTable
-              category="Integrated Services"
-              description="APIs e serviços externos para funcionalidades específicas"
-              technologies={project.technologies.service}
-            />
-            <TechTable
-              category="Database"
-              description="Armazenamento e gerenciamento de dados estruturados"
-              technologies={project.technologies.database}
-            />
+          
+          <div class="space-y-12">
+            <!-- Development Tools -->
+            <div>
+              <h3 class="text-xl font-semibold mb-6 text-[var(--foreground)]">Ferramentas de Desenvolvimento</h3>
+              <p class="text-sm text-[var(--muted-foreground)] mb-6 max-w-2xl">
+                Ferramentas de desenvolvimento e edição de código utilizadas no projeto
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <TechCard
+                  client:load
+                  icon={Code}
+                  name="Cursor"
+                  category="Development Tools"
+                />
+                <TechCard
+                  client:load
+                  icon={Bot}
+                  name="Claude Code"
+                  category="Development Tools"
+                />
+              </div>
+            </div>
+
+            <!-- Frontend Framework -->
+            <div>
+              <h3 class="text-xl font-semibold mb-6 text-[var(--foreground)]">Frontend Framework</h3>
+              <p class="text-sm text-[var(--muted-foreground)] mb-6 max-w-2xl">
+                Frameworks e bibliotecas para construção da interface web
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <TechCard
+                  client:load
+                  icon={Code}
+                  name="Astro"
+                  category="Frontend Framework"
+                />
+                <TechCard
+                  client:load
+                  icon={Sparkles}
+                  name="Vue"
+                  category="Frontend Framework"
+                />
+                <TechCard
+                  client:load
+                  icon={FileCode}
+                  name="React"
+                  category="Frontend Framework"
+                />
+              </div>
+            </div>
+
+            <!-- AI Engine -->
+            <div>
+              <h3 class="text-xl font-semibold mb-6 text-[var(--foreground)]">AI Engine</h3>
+              <p class="text-sm text-[var(--muted-foreground)] mb-6 max-w-2xl">
+                Modelos de Inteligência Artificial para análise e geração de conteúdo
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <TechCard
+                  client:load
+                  icon={Brain}
+                  name="OpenAI GPT-5"
+                  category="AI Engine"
+                />
+                <TechCard
+                  client:load
+                  icon={Brain}
+                  name="GPT-4o-mini"
+                  category="AI Engine"
+                />
+                <TechCard
+                  client:load
+                  icon={Sparkles}
+                  name="Gemini Flash 2.5"
+                  category="AI Engine"
+                />
+              </div>
+            </div>
+
+            <!-- Integrated Services -->
+            <div>
+              <h3 class="text-xl font-semibold mb-6 text-[var(--foreground)]">Serviços Integrados</h3>
+              <p class="text-sm text-[var(--muted-foreground)] mb-6 max-w-2xl">
+                APIs e serviços externos para funcionalidades específicas do sistema
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <TechCard
+                  client:load
+                  icon={Database}
+                  name="Supabase"
+                  category="Integrated Services"
+                />
+                <TechCard
+                  client:load
+                  icon={Globe}
+                  name="Vercel"
+                  category="Integrated Services"
+                />
+                <TechCard
+                  client:load
+                  icon={FileCheck}
+                  name="Nutrient.io"
+                  category="Integrated Services"
+                />
+              </div>
+            </div>
+
+			     <!-- Automation Platform & Database -->
+				 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+					<!-- Automation Platform -->
+					<div>
+					  <h3 class="text-xl font-semibold mb-6 text-[var(--foreground)]">Plataforma de Automação</h3>
+					  <p class="text-sm text-[var(--muted-foreground)] mb-6">
+						Ferramenta para construir e executar workflows automatizados
+					  </p>
+					  <div class="grid grid-cols-1 sm:grid-cols-1 gap-5">
+						<TechCard
+						  client:load
+						  icon={Workflow}
+						  name="n8n"
+						  category="Automation Platform"
+						/>
+					  </div>
+					</div>
+	  
+					<!-- Database -->
+					<div>
+					  <h3 class="text-xl font-semibold mb-6 text-[var(--foreground)]">Database</h3>
+					  <p class="text-sm text-[var(--muted-foreground)] mb-6">
+						Armazenamento e gerenciamento de dados estruturados
+					  </p>
+					  <div class="grid grid-cols-1 sm:grid-cols-1 gap-5">
+						<TechCard
+						  client:load
+						  icon={Database}
+						  name="PostgreSQL"
+						  category="Database"
+						/>
+					  </div>
+					</div>
+				  </div>
+	  
           </div>
         </div>
-      </FadeIn>
+      </StaggerIn>
     </section>
 
-    <SectionDivider />
+
+	<FullWidthImage src="/img/prompt-engeneering.png" alt="Prompt Engineering" />
+
 
     <!-- Prompt Engineering Section -->
     <section class="container mx-auto px-4 py-20">
-      <FadeIn client:load>
+      <StaggerIn client:load stagger={100}>
         <div class="max-w-6xl mx-auto">
           <h2 class="text-3xl md:text-4xl font-bold text-center mb-5">Prompt Engineering</h2>
           <p class="text-center text-[var(--muted-foreground)] mb-14 max-w-3xl mx-auto text-lg">
@@ -500,8 +635,8 @@ const project = {
 
           <!-- Context & Methodology -->
           <div class="mb-14">
-            <div class="max-w-4xl mx-auto space-y-6">
-              <div class="p-8 rounded-3xl bg-[var(--card)] border-2 border-[var(--border)]">
+            <div class="max-w-6xl mx-auto space-y-6">
+              <div class="p-8 rounded-3xl bg-[var(--card)] border border-[var(--border)]/60">
                 <h3 class="text-xl font-semibold mb-4">Metodologia</h3>
                 <p class="text-[var(--muted-foreground)] mb-4 leading-relaxed">
                   Todos os prompts seguem princípios estruturados para garantir consistência e qualidade nas respostas da IA:
@@ -534,7 +669,7 @@ const project = {
                 </ul>
               </div>
 
-              <div class="p-8 rounded-3xl bg-[var(--card)] border-2 border-[var(--border)]">
+              <div class="p-8 rounded-3xl bg-[var(--card)] border border-[var(--border)]/60">
                 <h3 class="text-xl font-semibold mb-4">Integração no n8n</h3>
                 <p class="text-[var(--muted-foreground)] mb-4 leading-relaxed">
                   Os prompts são integrados nos workflows n8n usando:
@@ -555,7 +690,7 @@ const project = {
                 </ul>
               </div>
 
-              <div class="p-8 rounded-3xl bg-[var(--card)] border-2 border-[var(--border)]">
+              <div class="p-8 rounded-3xl bg-[var(--card)] border border-[var(--border)]/60">
                 <h3 class="text-xl font-semibold mb-4">Uso nos Workflows</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-[var(--muted-foreground)]">
                   <div>
@@ -575,25 +710,31 @@ const project = {
             </div>
           </div>
 
+
+		  <SectionDivider />
+
           <!-- Telos Prompts Overview -->
           <div class="mb-14">
-            <div class="text-center mb-8">
-              <h3 class="text-2xl font-semibold mb-3">Sistema de Prompts do Telos</h3>
-              <p class="text-sm text-[var(--muted-foreground)]">
-                Arquitetura modular de prompts que compõem a personalidade e comportamento do Telos. Arquivos completos disponíveis em <code class="px-3 py-1.5 rounded-xl bg-[var(--muted)]/30 text-xs">/data/prompts/</code>:
-                <a href="https://github.com/muriloscigliano/murilo-unifecaf/tree/main/data/prompts" target="_blank" rel="noopener noreferrer" class="text-[var(--primary)] hover:underline ml-1">
-                  Ver no GitHub
-                </a>
+            <div class="max-w-4xl mx-auto text-center mb-8">
+              <h3 class="text-4xl font-semibold mb-4 text-[var(--foreground)]">Sistema de Prompts do Telos</h3>
+              <p class="text-base text-[var(--muted-foreground)] leading-relaxed mb-6">
+                Arquitetura modular de prompts que compõem a personalidade e comportamento do Telos.
               </p>
+              <Button variant="outline" size="lg" asChild>
+                <a href="https://github.com/muriloscigliano/areyouhuman/tree/main/src/data" target="_blank" rel="noopener noreferrer">
+                  Ver Prompts no GitHub
+                </a>
+              </Button>
             </div>
           </div>
 
-        <FullWidthImage src="/placeholder-prompts.jpg" alt="Prompt Engineering" />
+
 
           <!-- Core Prompts -->
-          <div class="mb-14">
-            <h4 class="text-xl font-semibold mb-6 text-[var(--muted-foreground)] uppercase tracking-wide">Core Prompts</h4>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <StaggerIn client:load stagger={80}>
+            <div class="mb-14">
+              <h4 class="text-xl font-semibold mb-6 text-[var(--muted-foreground)] uppercase tracking-wide">Core Prompts</h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <PromptCard
                 client:load
                 icon={Target}
@@ -645,12 +786,16 @@ const project = {
                 path="core"
               />
             </div>
-          </div>
+            </div>
+          </StaggerIn>
+
+		  <SectionDivider />
 
           <!-- Behavioral Prompts -->
-          <div class="mb-14">
-            <h4 class="text-xl font-semibold mb-6 text-[var(--muted-foreground)] uppercase tracking-wide">Behavioral Prompts</h4>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <StaggerIn client:load stagger={80}>
+            <div class="mb-14">
+              <h4 class="text-xl font-semibold mb-6 text-[var(--muted-foreground)] uppercase tracking-wide">Behavioral Prompts</h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <PromptCard
                 client:load
                 icon={Zap}
@@ -692,12 +837,16 @@ const project = {
                 path="behavioral"
               />
             </div>
-          </div>
+            </div>
+          </StaggerIn>
+
+		  <SectionDivider />
 
           <!-- Functional Prompts -->
-          <div class="mb-14">
-            <h4 class="text-xl font-semibold mb-6 text-[var(--muted-foreground)] uppercase tracking-wide">Functional Prompts</h4>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <StaggerIn client:load stagger={80}>
+            <div class="mb-14">
+              <h4 class="text-xl font-semibold mb-6 text-[var(--muted-foreground)] uppercase tracking-wide">Functional Prompts</h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <PromptCard
                 client:load
                 icon={FileCheck}
@@ -739,12 +888,16 @@ const project = {
                 path="functional"
               />
             </div>
-          </div>
+            </div>
+          </StaggerIn>
+
+		  <SectionDivider />
 
           <!-- Technical Prompts -->
-          <div class="mb-14">
-            <h4 class="text-xl font-semibold mb-6 text-[var(--muted-foreground)] uppercase tracking-wide">Technical Prompts</h4>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <StaggerIn client:load stagger={80}>
+            <div class="mb-14">
+              <h4 class="text-xl font-semibold mb-6 text-[var(--muted-foreground)] uppercase tracking-wide">Technical Prompts</h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <PromptCard
                 client:load
                 icon={Network}
@@ -775,13 +928,25 @@ const project = {
                 usage="Exemplos de comportamento"
                 path="technical"
               />
+              <PromptCard
+                client:load
+                icon={Shield}
+                title="Response Guardrails"
+                description="Limites e diretrizes para manter respostas focadas e dentro do escopo"
+                systemMessagePreview="Response Guardrails: Maximum 200 words per response. Stay focused on automation, AI strategy, digital transformation, business process improvement, software development, project planning, and technology consulting. Redirect unrelated topics. Never discuss recipes, weather, personal advice, medical/legal/financial advice, entertainment, politics, or religion."
+                userMessagePreview="Word limit (200 max), topic boundaries, redirect messages for off-topic queries, prohibited topics list"
+                usage="Controle de escopo"
+                path="technical"
+              />
             </div>
-          </div>
+            </div>
+          </StaggerIn>
 
           <!-- Techniques Used -->
-          <div>
-            <h3 class="text-2xl font-semibold mb-8 text-center">Techniques Applied</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <StaggerIn client:load stagger={80}>
+            <div>
+              <h3 class="text-2xl font-semibold mb-8 text-center">Techniques Applied</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
               <PromptTechnique
                 icon={BookOpen}
                 title="Few-shot Learning"
@@ -813,9 +978,10 @@ const project = {
                 description="Prompts modulares que podem ser compostos dinamicamente, incluindo apenas módulos relevantes"
               />
             </div>
-          </div>
+            </div>
+          </StaggerIn>
         </div>
-      </FadeIn>
+      </StaggerIn>
     </section>
 
     <SectionDivider />
@@ -823,36 +989,37 @@ const project = {
     <!-- CTA Section -->
     <section class="container mx-auto px-4 py-20">
       <FadeIn client:load>
-        <div class="max-w-3xl mx-auto">
-          <div class="text-center p-12 rounded-3xl bg-gradient-to-br from-[var(--primary)]/10 via-[var(--primary)]/5 to-transparent border-2 border-[var(--primary)]/20">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center p-12 rounded-3xl bg-[var(--card)] border border-[var(--border)]/60">
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 text-green-600 dark:text-green-400 text-sm font-medium mb-6">
               <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
               <span>Sistema em Produção</span>
             </div>
             <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Use</h2>
             <p class="text-[var(--muted-foreground)] mb-8 max-w-xl mx-auto text-lg">
-              Workflow n8n hospedado no Railway.app processando leads em tempo real. Sistema totalmente funcional em produção.
+              Workflow n8n hospedado no Railway.app processando leads em tempo real. Sistema totalmente funcional em produção com chat Telos AI Strategist no site Are You Human.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Button variant="default" size="lg" asChild>
-                <a href="https://github.com/muriloscigliano/murilo-unifecaf" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/muriloscigliano/areyouhuman" target="_blank" rel="noopener noreferrer">
                   Ver no GitHub
                 </a>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <a href="https://areyouhuman.up.railway.app" target="_blank" rel="noopener noreferrer">
-                  Acessar n8n
+                <a href="https://areyouhuman-ten.vercel.app/" target="_blank" rel="noopener noreferrer">
+                  Live Demo
                 </a>
               </Button>
             </div>
-            <div class="pt-8 border-t border-[var(--border)]">
-              <p class="text-xs text-[var(--muted-foreground)]">
-                Desenvolvido por <strong>Murilo Scigliano</strong> | Are You Human? Studio
+            <div class="pt-8 border-t border-[var(--border)]/60">
+              <p class="text-l text-[var(--muted-foreground)]">
+                Desenvolvido por <strong>Murilo Scigliano</strong>
               </p>
             </div>
           </div>
         </div>
       </FadeIn>
     </section>
+
   </main>
 </Layout>

@@ -1,0 +1,78 @@
+---
+interface Props {
+  src: string;
+  alt?: string;
+  poster?: string;
+  autoplay?: boolean;
+  loop?: boolean;
+  muted?: boolean;
+  playsinline?: boolean;
+}
+
+const {
+  src,
+  alt = "Video",
+  poster,
+  autoplay = true,
+  loop = true,
+  muted = true,
+  playsinline = true,
+} = Astro.props;
+---
+
+<div class="w-full max-w-[1200px] bg-[var(--muted)]/30 rounded-[36px] overflow-hidden flex justify-center mx-auto my-12 fade-in-video relative" data-fade-in>
+  <video
+    class="w-full h-[700px] rounded-[36px] object-cover bg-black"
+    autoplay={autoplay}
+    loop={loop}
+    muted={muted}
+    playsinline={playsinline}
+    preload="metadata"
+    poster={poster}
+    aria-label={alt}
+  >
+    <source src={src} type="video/mp4" />
+    <source src={src} type="video/webm" />
+    Your browser does not support the video tag.
+  </video>
+  <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+    <div class="w-20 h-20 rounded-full bg-white/10 backdrop-blur-md border-2 border-white/20 flex items-center justify-center">
+      <svg class="w-10 h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const videos = document.querySelectorAll('[data-fade-in]');
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    videos.forEach((video) => observer.observe(video));
+  });
+</script>
+
+<style>
+  .fade-in-video {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .fade-in-video.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
