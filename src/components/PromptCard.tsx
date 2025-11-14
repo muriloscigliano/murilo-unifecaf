@@ -41,7 +41,7 @@ export function PromptCard({
           <Icon className="w-8 h-8 text-[var(--muted-foreground)] stroke-[1.5] flex-shrink-0 mt-1" />
           <div className="flex-1">
             <h3 className="text-lg font-semibold mb-2">{title}</h3>
-            <p className="text-m text-[var(--muted-foreground)] mb-3 leading-relaxed">
+            <p className="text-base text-[var(--muted-foreground)] mb-3 leading-relaxed">
               {description}
             </p>
             <div className="text-[16px] text-[var(--muted-foreground)] font-mono bg-[var(--muted)]/50 px-3 py-1.5 rounded-lg inline-block mb-4">
